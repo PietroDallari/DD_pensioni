@@ -94,6 +94,23 @@ class Assumptions:
     #   correnti, NESSUNA voce contributiva). Quei 17,2 mld tornano contributi versati.
     #   => 243,459 - [1,2 ... 7,3] = 236,1 - 242,3
     #
+    # SOTTOCONTRIBUZIONI (Allegato 16, 7.332 mln): NON vanno sottratte. Sarebbe un
+    # DOPPIO CONTEGGIO. Sgravi e sottocontribuzioni sono contabilizzati in modo diverso:
+    #   - SGRAVI: l'aliquota di COMPUTO resta al 33% (il diritto pensionistico e' pieno,
+    #     lo Stato rimborsa). INPS iscrive il contributo PIENO nelle entrate contributive
+    #     e poi corregge con le poste correttive -> sono DENTRO i 284,047 -> si sottraggono.
+    #   - SOTTOCONTRIBUZIONI: l'aliquota e' davvero RIDOTTA. Si iscrive il contributo
+    #     ridotto, e la GIAS integra con un TRASFERIMENTO separato -> NON sono dentro i
+    #     284,047 -> NON si sottraggono.
+    # PROVA nel bilancio del FPLD (Gestione n.2):
+    #   aliquote contributive          138.688 mln  <- entrate contributive
+    #   trasferimenti da GIAS            5.816 mln  <- voce SEPARATA, di cui 4.998 di
+    #                                                  "copertura mancato gettito contributivo"
+    #   Allegato 16, quota FPLD          4.996,3 mln  -> COINCIDE con i 4.998.
+    # Le entrate contributive sono quindi gia' al netto delle aliquote ridotte: INPS
+    # scrive che i trasferimenti sono "ad INTEGRAZIONE DI MINORI ENTRATE per riduzione
+    # di aliquote contributive" — minori entrate, cioe' gia' ridotte.
+    #
     # Punto di rottura del ponte: 212,2 mld. Tutto il vintage 2025+ e' 24-30 mld sopra.
     contributi_ivs: float = 237.3     # vintage 2025+, centrale. Intervallo 236,1-242,3.
     contributi_contributivi: float = 99.0   # quota dirottabile, scalata sulla base
