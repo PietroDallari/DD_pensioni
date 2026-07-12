@@ -8,9 +8,28 @@ Nel sistema a ripartizione (PAYG) i contributi di chi lavora finanziano le pensi
 
 Il costo della transizione non si elimina, si sposta soltanto: nel chi paga e nel quando. Ogni schema "a costo zero" nasconde un errore contabile.
 
-Perché affrontarlo, allora. Il guadagno del piano rispetto al baseline è generazionale: una o due generazioni di giovani smettono di essere prigioniere del rendimento nozionale PAYG (~2,7%, agganciato a un PIL in stagnazione demografica) e risparmiano sul mercato a rendimenti composti decenti. A parità di versamenti, il solo differenziale di rendimento (4% netto contro 2,7%) vale ~+35% di montante su 40 anni — e nel piano versano anche 8 punti in meno. Parte del differenziale è premio al rischio, non un regalo; ma per un giovane italiano l'alternativa non è tra rischio e sicurezza: è tra rischio di mercato diversificato e rischio demografico concentrato su un solo paese. Il secondo non è più sicuro — è solo non diversificabile.
+Perché affrontarlo, allora. Il guadagno del piano rispetto al baseline è generazionale: una o due generazioni di giovani smettono di essere prigioniere del rendimento nozionale PAYG e risparmiano sul mercato a rendimenti composti decenti. Parte del differenziale è premio al rischio, non un regalo; ma per un giovane italiano l'alternativa non è tra rischio e sicurezza: è tra rischio di mercato diversificato e rischio demografico concentrato su un solo paese. Il secondo non è più sicuro — è solo non diversificabile.
 
-In concreto, per due profili di lavoratore dipendente (valori reali; carriera di 40 anni, crescita salariale reale 1%, pensione a 67, coefficiente ~5,2%; PAYG rivalutato all'1% reale, fondo al 2,5% reale netto):
+### Il rendimento nozionale del PAYG italiano è reale zero
+
+Non è un'ipotesi: è un dato. Il rendimento nozionale del sistema contributivo **è per legge** il tasso di capitalizzazione del montante, pubblicato ogni anno nella nota ISTAT del Ministero del Lavoro. Confrontandolo con l'inflazione (HICP Eurostat) si ottiene il rendimento **reale** effettivamente riconosciuto:
+
+| Periodo | Nozionale nominale | Inflazione | **Nozionale reale** |
+|---|---|---|---|
+| 1996-2025 (dall'avvio del contributivo) | 2,82% | 2,08% | **+0,73%** |
+| 2006-2025 (ultimi 20 anni) | 1,78% | 2,00% | **−0,21%** |
+| 2011-2025 (ultimi 15 anni) | 1,35% | 1,98% | **−0,62%** |
+| 2016-2025 (ultimi 10 anni) | 1,70% | 2,20% | **−0,49%** |
+
+*Fonti: tassi ufficiali di capitalizzazione 1976-2025 (nota ISTAT/Ministero del Lavoro, estratti in `analisi/output/scarto_tassi_per_anno.csv`); HICP Italia (Eurostat `prc_hicp_aind`). Medie geometriche.*
+
+Il sistema ha riconosciuto un rendimento reale **negativo** in ognuno degli ultimi tre orizzonti significativi. Questo documento adotta perciò **0% reale** come ipotesi centrale per il PAYG — già generosa rispetto ai −0,2/−0,6% osservati, e coerente con il bordo basso delle proiezioni RGS/Ageing Report (0,5-0,8%, a loro volta ottimistiche rispetto al realizzato).
+
+È il punto centrale della tesi: **il PAYG non offre un rendimento modesto, non ne offre affatto.** Un giovane che versa il 33% per 40 anni riceve indietro, in termini reali, poco più di quanto ha versato. Il confronto con un fondo al 2,5% reale netto non è quindi "rischio contro sicurezza", ma "rendimento contro nessun rendimento".
+
+> ⚠️ **Da ricalcolare.** La tabella qui sotto è ancora costruita sull'ipotesi precedente (PAYG all'1% reale). Con il PAYG a 0% reale la pensione PAYG scende e il vantaggio della proposta **cresce**: i numeri vanno rifatti, e si muoveranno a favore della proposta, non contro.
+
+In concreto, per due profili di lavoratore dipendente (valori reali; carriera di 40 anni, crescita salariale reale 1%, pensione a 67, coefficiente ~5,2%; PAYG rivalutato all'1% reale — *ipotesi superata, cfr. sopra* —, fondo al 2,5% reale netto):
 
 | | Mediano (RAL €27k) | Top 10% (RAL €40k) |
 |---|---|---|
@@ -41,7 +60,11 @@ Stessa pensione (o poco più), 8 punti di contributi in meno per 40 anni, e a fi
 | Spesa pensionistica (legacy) | ~€290 mld/anno | INPS 2025 (~15,3% PIL); cala a ~0 in ~30 anni |
 | Contributi IVS totali | ~€240 mld/anno | Di cui ~€100 mld dai contributivi puri |
 | Disavanzo strutturale attuale | €290 − €240 = €50 mld/anno | Coperto dalla fiscalità generale |
-| Pensionati ≥ €3.000 netti/mese | ~650.000 | Sottoinsieme dell'8% sopra €3.000 lordi; media ~€60.000 lordi/anno |
+| Rendimento nozionale PAYG | **0% reale** | **Dato, non ipotesi**: tassi ufficiali di capitalizzazione vs HICP → −0,21% (20 anni), −0,62% (15 anni). Cfr. §1 |
+| Beneficiari totali | **16,06 mln** | INPS open data 2016 (dataset 1824) — conferma la stima |
+| Pensionati > €3.000 **lordi**/mese | **1,10 mln** (6,9%) | INPS open data 2016 (dataset 1824). ⚠️ La platea in **netto** non è osservabile: la classe INPS superiore è aperta ("3.000 e più") |
+| Regime di liquidazione (quota di spesa) | **85,9% retributivo, 13,0% misto, 1,1% contributivo puro** | INPS open data (dataset 1648). Conferma: i pensionati ricchi sono retributivi/misti |
+| Componente non finanziata (retributivo vs controfattuale contributivo) | **~17% a 25 anni di anzianità, ~8% a 38, ~4% a 40** | Microsimulazione su distribuzione INPS + calcolatore. **Non il 50%** — cfr. §4-D |
 | TFR — flusso annuo | ~€30 mld/anno | Mobilizzabile (denaro nuovo) |
 | TFR — stock in azienda | ~€242 mld | Non mobilizzabile in blocco (debito embedded nei bilanci) |
 | Rendimento fondi | 5% nominale | |
@@ -50,6 +73,24 @@ Stessa pensione (o poco più), 8 punti di contributi in meno per 40 anni, e a fi
 | Debito pubblico | ~€3.000 mld (~136% PIL) | |
 
 Le cifre sono ordini di grandezza, non un modello calibrato.
+
+### Il perimetro dei €290 mld è ambiguo — e va verificato
+
+Era stato ipotizzato che i €290 mld di spesa (e quindi il disavanzo di €50 mld) fossero **gonfiati dall'assistenza** (GIAS: invalidità civile, assegni sociali, sgravi), che non è previdenza ed è per definizione finanziata dalla fiscalità generale. Se fosse così, il disavanzo previdenziale vero sarebbe minore e l'intero piano più leggero.
+
+**La verifica non conferma l'ipotesi.** Eurostat COFOG (`gov_10a_exp`, Italia 2023):
+
+| Voce | €mld |
+|---|---|
+| Vecchiaia (*old age*) | 290,9 |
+| Superstiti | 50,4 |
+| **Pensioni vere (vecchiaia + superstiti)** | **341,3** |
+| Malattia/invalidità, famiglia, disoccupazione, esclusione sociale | 108,1 |
+| Protezione sociale (totale) | 449,3 |
+
+I €290 mld del documento coincidono con la sola voce **"vecchiaia" della PA nel suo complesso** — non con l'INPS, e **al netto dei €50 mld di superstiti**. Il perimetro è quindi ambiguo, e se si usa l'aggregato pensionistico corretto (€341 mld) la spesa è **più alta**, non più bassa: il disavanzo peggiorerebbe.
+
+Verdetto: **ipotesi non confermata, questione aperta.** Risolverla richiede il Rendiconto generale INPS, che separa gestioni previdenziali e GIAS — disponibile solo come PDF e non ancora estratto. Finché non è fatto, i €290 mld e i €50 mld di disavanzo vanno trattati come **numeri di perimetro incerto**, non come dati.
 
 ---
 
@@ -73,9 +114,23 @@ Il saldo nozionale accumulato viene riconosciuto come IOU dello Stato, accredita
 
 ### D — Prelievo sui retributivi ricchi → fondo di ammortamento del "paper"
 
-Solo i pensionati a regime retributivo (inclusa la quota retributiva dei misti) con pensione ≥ €3.000 netti/mese versano un prelievo obbligatorio del 50%, intestato come trasferimento intergenerazionale. Cassa liberata oggi: 650.000 × €60.000 × 50% = ~€20 mld/anno (oggi tutti i pensionati ricchi sono retributivi o misti; i contributivi ricchi non esistono ancora). La somma viene investita al 5%.
-
 Perché solo il retributivo: il retributivo è calcolato sull'ultimo stipendio e contiene strutturalmente una componente non finanziata (eroga più di quanto versato); il prelievo recupera quella componente. Il contributivo eroga circa quanto versato: tagliarlo equivarrebbe a confiscare i contributi versati, in contraddizione con lo switch stesso.
+
+Il presupposto **regge**: i dati INPS (dataset 1648) confermano che il 98,9% della spesa pensionistica va a regimi retributivo (85,9%) o misto (13,0%), e appena l'1,1% a contributivo puro. La platea esiste.
+
+> ⚠️ **Questa leva è in corso di riprogettazione: la formulazione precedente non regge alla verifica sui dati.**
+>
+> La versione originale prelevava il **50% della pensione** dei retributivi sopra €3.000 netti/mese, stimando ~€20 mld/anno (650.000 × €60.000 × 50%). La microsimulazione sulla distribuzione INPS reale mostra tre problemi:
+>
+> 1. **Il 50% piatto non è la componente non finanziata.** Confrontando ogni classe di importo col proprio controfattuale interamente contributivo, l'eccesso effettivo è **~8%** della pensione a 38 anni di anzianità — non 50%. Un prelievo al 50% **confischerebbe contributi versati**, distruggendo proprio la difesa costituzionale della leva (§10).
+> 2. **Il gettito difendibile è 1,8-7,7 mld/anno**, non 20. Prelevando il 100% della *sola* componente non finanziata sopra €3.000 lordi: €7,7 mld (25 anni di anzianità) → €1,8 mld (40 anni). **Da 3 a 13 volte meno** della stima originale.
+> 3. **L'asse di targeting è sbagliato.** La generosità non finanziata non cresce con l'importo: cresce al **calare dell'anzianità** (~17% a 25 anni, ~8% a 38, ~4% a 40). Un dirigente con 40 anni di contributi ha una pensione quasi pari al suo controfattuale contributivo; una baby-pensione con 20 anni no. **La leva va agganciata al rapporto pensione/anni versati, non alla soglia di importo.**
+>
+> **Limite di stima, dichiarato.** Una stima aggregata *solida* non è ottenibile dai soli open data: la distribuzione congiunta **importo × anzianità × regime non esiste** (il dataset con il regime non ha le classi di importo, e nessun dataset incrocia anzianità e importo). La quota retributiva per classe è quindi imputata, non osservata. Il calcolo è invece **pienamente eseguibile da chi ha i microdati** (INPS/RGS dispongono degli estratti contributivi individuali): è un limite di *accesso ai dati*, non di metodo.
+>
+> Conseguenza sul piano: il Comparto 2 (§6) non è più coperto per ~⅔ dal fondo della Leva D. **Il §6 e il §7 vanno ricalcolati.**
+
+Durata e profilo: non si crea più alcun retributivo puro (le maturazioni sono cessate nel 1995/2011), quindi la platea con quota retributiva coincide con i pensionati attuali più i misti che andranno in pensione fino al ~2045-2050. La base è perciò finita e calante. È asset-liability matching con la passività di riconoscimento (Leva C), con una coda: la fonte si esaurisce intorno al 2070 mentre le rendite di riconoscimento corrono fino al ~2095.
 
 Durata e profilo: non si crea più alcun retributivo puro (le maturazioni sono cessate nel 1995/2011), quindi la platea con quota retributiva coincide con i pensionati attuali più i misti che andranno in pensione fino al ~2045-2050. La base è perciò finita e calante: ~€20 mld/anno stabili per ~25 anni, poi in discesa verso zero entro il ~2070. È asset-liability matching con la passività di riconoscimento (Leva C), con una coda: la fonte si esaurisce intorno al 2070 mentre le rendite di riconoscimento corrono fino al ~2095, e il divario è coperto dal decumulo del fondo già accumulato.
 
@@ -89,7 +144,10 @@ Il fondo della Leva D copre ~⅔ della passività di riconoscimento. Il residuo 
 
 1. Spread di tasso. La passività è indicizzata al nozionale (~2,7%), il fondo rende 5%: lo spread di ~2,3 punti riduce il gap in termini matched a ~€300-400 mld. L'IOU resta inoltre finanziamento sotto-mercato (2,7% contro 4,3% del BTP 50y): conviene portarlo come claim nozionale anziché convertirlo in BTP, con un risparmio di ~€8 mld/anno su €500 mld.
 
-2. Prelievo affinato. Prelevare la sola componente non finanziata della pensione retributiva (non il 50% piatto) e abbassare la soglia a €2.500 netti, sempre solo sui retributivi: stessa platea equa, ~€100-200 mld aggiuntivi, nessun contributo versato toccato.
+2. ~~Prelievo affinato. Prelevare la sola componente non finanziata della pensione retributiva (non il 50% piatto) e abbassare la soglia a €2.500 netti: ~€100-200 mld aggiuntivi.~~
+   > ⚠️ **Ritirato: era un doppio conteggio.** "Prelevare la sola componente non finanziata" **è** la Leva D fatta correttamente, non una leva aggiuntiva. Le due non si sommano: sono la stessa base imponibile, contata due volte. Nella riformulazione (§4-D) la componente non finanziata è già prelevata al 100%, e il gettito totale è €1,8-7,7 mld/anno — non €20 mld + €100-200 mld.
+   >
+   > La soglia in netto (€2.500 o €3.000) resta inoltre **non calcolabile** sugli open data: €3.000 netti/mese ≈ €4.372 lordi, che cade *dentro* la classe INPS superiore aperta ("3.000 e più"), la cui coda non è osservabile.
 
 (L'avanzo PAYG da estinzione del legacy non è una fonte del Comparto 2: appartiene al Comparto 1 e ammortizza la Leva E — §4-E.)
 
