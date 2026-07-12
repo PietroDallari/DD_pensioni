@@ -1,0 +1,6 @@
+parametro,valore,unita,anno,fonte,flag_qualita
+adl_totale_s13ps,7681.0,mld EUR,2021,"Eurostat nasa_10_pens1, penscheme=S13PS, na_item=F63_LS",verificato
+pv_pensioni_in_pagamento,3682.046627513051,mld EUR,2024,"COFOG 359,6 lineare a zero su 30 anni, sconto 5%",stima_esplicita
+diritti_maturati_attivi,3998.953372486949,mld EUR,2021,Via A: ADL - PV legacy,stima_esplicita
+passivita_riconoscimento_via_A,2599.3196921165168,mld EUR,2021,"Via A, misti al 35%",stima_esplicita
+passivita_riconoscimento_via_B,2296.6870648182094,mld EUR,2024,Via B: occupati Eurostat lfsa_egan x montante da calcolatore,stima_esplicita

@@ -54,7 +54,14 @@ class Assumptions:
     tfr_flusso_netto: float = 24.0    # 30 lordi - 6 Fondo Tesoreria perso
 
     # --- riconoscimento (Comparto 2) ---
-    passivita_riconoscimento: float = 1400.0  # DA VERIFICARE (Fase 1.5), range 1300-1500
+    # VERIFICATO a due vie (analisi/fase3_passivita.py), convergenti al 12%:
+    #   Via A (top-down): ADL Eurostat nasa_10_pens1 S13PS 2021 = 7.681 mld
+    #                     meno PV pensioni in pagamento (3.682) = 3.999 diritti degli
+    #                     attivi; al netto della quota retributiva dei misti (35%) -> 2.599
+    #   Via B (bottom-up): occupati contributivi per eta' (Eurostat lfsa_egan) x montante
+    #                     medio dal calcolatore coi tassi ufficiali          -> 2.297
+    # Il placeholder di 1.400 era sottostimato di ~1,8x.
+    passivita_riconoscimento: float = 2450.0  # centro 2.300-2.600
     coda_riconoscimento: int = 70     # anni su cui scorre la passivita
     exit_levy: float = 0.05           # quota di nozionale NON riconosciuta (0.05 = 95% riconosciuto)
 
@@ -71,12 +78,16 @@ class Assumptions:
     # alternativa (400k sopra 5.000, stampa 2023): implicherebbe 170k sopra 100k/anno,
     # 4,2x l'osservato.
     # Intervallo difendibile: 13,5 (alpha 3,36) - 17,5 (alpha 2,79) mld/anno.
-    gettito_tetto2500: float = 15.0   # centro dell'intervallo ancorato 13,5-17,5
+    # Gettito NETTO del clawback IRPEF perso (analisi/fase6_pareto_2024_lordo_netto.py):
+    # lordo tagliato 31,1 mld -> netto per lo Stato 17,1 (aliquota marginale media 44,1%).
+    gettito_tetto2500: float = 17.1   # NETTO. Lordo = 31,1
     tetto_temporaneo_anni: int = 0    # 0 = strutturale; >0 = versione temporanea
 
     # --- Scenario B: eccesso misurato ---
-    gettito_eccesso_min: float = 1.8  # DA STRINGERE con coorti di decorrenza (Fase 1.4)
-    gettito_eccesso_max: float = 7.7
+    # Da coorti di decorrenza (analisi/fase4_coorti.py): eccesso lordo 5,5-7,3 mld.
+    # NETTO del clawback (aliquota marginale 44%): 3,1-4,1.
+    gettito_eccesso_min: float = 3.1  # NETTO. Lordo = 5,5
+    gettito_eccesso_max: float = 4.1  # NETTO. Lordo = 7,3
     anni_picco_eccesso: int = 25      # base piatta, poi declino lineare a zero
     anni_fine_eccesso: int = 50
 

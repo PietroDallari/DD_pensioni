@@ -1,0 +1,4 @@
+scenario,gettito_lordo_mld,gettito_netto_mld,platea_mln,aliquota_marginale_media_pct,alpha1,alpha2,media_classe_aperta,fonte,flag_qualita
+A_tetto_2500_netti,31.088734382133126,17.089967863110544,1.238681359744,44.1212974816132,2.7546080116959355,4.145050332803283,4642.745234396334,forma: INPS 2017 (711k>=3.500; 266k>=5.000) + coda 2014; livello: INPS 1824 (2016) rivalutato HICP 2024,ancorato
+B_eccesso_misurato_min,1.8,1.0058166453309625,,44.1212974816132,,,,microsimulazione su controfattuale contributivo,intervallo
+B_eccesso_misurato_max,7.7,4.302660093915784,,44.1212974816132,,,,microsimulazione su controfattuale contributivo,intervallo
