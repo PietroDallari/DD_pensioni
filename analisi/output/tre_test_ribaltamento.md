@@ -1,68 +1,113 @@
-# I tre test sul "ribaltamento" — stato
+# I tre test sul "ribaltamento" — ESITO: **il ribaltamento è RESPINTO**
 
 > **Ipotesi sotto esame**: le aliquote di rendimento decrescenti (D.Lgs. 503/1992 art.12)
-> obbligavano i futuri pensionati ricchi a retribuzioni altissime, su cui hanno versato il
-> 33% → la loro componente non finanziata è ~0 → **la Leva D manca il bersaglio**.
+> obbligavano i futuri pensionati ricchi a retribuzioni altissime su cui hanno versato →
+> componente non finanziata ≈ 0 → **la Leva D manca il bersaglio**.
+>
+> **VERDETTO: RESPINTO.** Era un artefatto di un'assunzione irrealistica.
 
-## TEST 1 — Premio di carriera correlato al censo ❌ **IL RIBALTAMENTO NON SOPRAVVIVE**
+## TEST 1 — Premio di carriera correlato al censo ❌ **UCCIDE IL RIBALTAMENTO**
 
-Il modello precedente incrociava pensione × premio come **indipendenti**. Non lo sono: le
-pensioni alte nascono da carriere **ripide**. Il «ricco a premio 0» — uno che guadagna
-€225.000 **piatti dai 25 anni** per 38 anni — non è un caso tipico, è un caso **assurdo**.
-E l'intera conclusione viveva solo in quella colonna.
+Il modello incrociava pensione × premio come **indipendenti**. Non lo sono: le pensioni alte
+nascono da carriere **ripide**. Il «ricco a premio 0» — uno che guadagna €225.000 **piatti
+dai 25 anni** per 38 anni — non è un caso tipico: è **assurdo**. E l'intera conclusione
+viveva solo in quella colonna.
 
-Calibrazione del premio (dichiarata come ipotesi): 0 sotto 1.500 · +0,5 a 2.500 · +1 a
-3.500 · +1,75 a 5.000 · +2,25 a 8.000+.
+**Quota media sopra €5.000: da 4,2% → 26,3%.** Criterio del test (>15-20%): **superato.**
 
-| Pensione/mese | Premio | Quota — **indipendente** (pr 0) | Quota — **CORRELATO** |
-|---|---|---|---|
-| 2.000 | 0,25% | 38,0% | 40,9% |
-| 3.500 | 1,00% | 31,3% | 43,0% |
-| 5.000 | 1,75% | **15,0%** | **38,0%** |
-| 8.000 | 2,25% | **0,0%** | **31,5%** |
-| 10.000 | 2,38% | 0,0% | 29,1% |
+## TEST 2 — Verifiche normative ✅ **il modello aveva ragione, ed è conservativo**
 
-**Quota media sopra €5.000: da 5,6% → 33,2%.**
+- **Contributi sopra il tetto: si versavano PIENI.** Prova regina: l'art. 3-ter D.L. 384/1992
+  impone **+1 punto** sopra la prima fascia — *non si aggiunge un punto sopra una soglia dove
+  non si versa nulla*. E il massimale (art. 2 c.18 L. 335/1995) vale solo per i **nuovi
+  iscritti dal 1996**: per i vecchi iscritti, INPS Circ. 177/1996 — «l'**intera retribuzione**,
+  senza applicare il massimale».
+- **Ante-1988**: sopra il tetto il rendimento era **zero** (non 1,60/1,35…). Il modello,
+  applicando le fasce anche a quegli anni, **sovrastima il rendimento dei ricchi** → è
+  conservativo.
+- **Serie storica del tetto** recuperata (INPS Circ. 114/2009): 1993 = €27.617 → 2010 =
+  €42.364 → 2024 = €55.008. *Correzione: i €43.042 che usavo erano il 2011, non il 2010.*
 
-**Criterio del test** (>15-20% ⇒ leva difendibile): **33,2% ⇒ LA LEVA TORNA DIFENDIBILE.**
+## TEST 3 — Quota A / ex-INPDAI ⚠️ **spinge ancora nella stessa direzione**
 
-### E il modello ora converge con la letteratura
+**Ex-INPDAI** (dirigenti industria, fondo soppresso nel 2003, L. 289/2002 art. 42): avevano un
+**massimale contributivo proprio** (€143k-175k) fino al 2002 e rendimenti più generosi fino al
+1994. **Versavano MENO di quanto il modello assume → il loro eccesso è più ALTO.** Pesavano per
+il **48% del disavanzo dei fondi speciali** pur essendo il 2,3% delle pensioni.
+Numerosità da fonte primaria: **NON TROVATA** (da estrarre dall'Osservatorio INPS per gestione).
 
-Con il premio correlato la quota diventa quasi **piatta** (38-43% al centro, 29-38% in
-alto): **eccesso positivo ovunque, decrescente ma mai nullo**. È esattamente ciò che trova
-la letteratura sui rendimenti impliciti (Castellino, Fornero, CeRP). Il modello smette di
-contraddirla — che era il segnale d'allarme di partenza.
+## ⚠️ Il falso allarme più serio — e il modello lo aveva già gestito
 
-## TEST 2 — Tetti storici e contributi sopra il tetto 🔄 *in corso*
+Segnalato: l'aliquota IVS storica era **19-27%**, non 33%; applicare il 33% retroattivamente
+avrebbe gonfiato i contributi versati, rendendo la conclusione un artefatto.
+**Verificato: il modello usa già le aliquote storiche.**
 
-Da verificare: (a) serie annuale del limite di prima fascia (il modello usa 43.042 fisso);
-(b) **decisivo** — sopra il tetto pensionabile si versavano contributi **pieni**? Il
-massimale contributivo dell'art. 2 c.18 L. 335/1995 si applica solo ai **nuovi iscritti**
-dal 1996, cioè *non* ai retributivi. Se ai vecchi iscritti non si applicava alcun
-massimale, il «hanno versato moltissimo» regge; se sopra il tetto non si versava,
-l'eccesso dei ricchi **risale ancora**.
+| Anno | Aliquota di computo usata dal montante |
+|---|---|
+| 1972 | **19,21%** |
+| 1976 | 23,51% |
+| 1993 | 27,17% |
+| 1996+ | 33,00% |
 
-## TEST 3 — Quota A e ex-INPDAI 🔄 *in corso*
+Media pre-1996: **24,35%**. Il codice di Nazareno lo gestiva
+(`computation = 0.33 if year >= 1996 else financing`), e i valori **coincidono esattamente**
+con la serie INPS Circ. 114/2009.
 
-Popolazioni che la formula standard non descrive, **tutte con eccesso più alto**:
-ex-INPDAI (dirigenti industria, fondo soppresso nel 2003), fondi speciali (telefonici
-~€8.200/mese, volo ~€7.900, elettrici, ferrovieri), quota A calcolata sull'**ultima
-retribuzione** (lo scatto finale gonfiava la pensione senza contributi corrispondenti).
+## Nota sulla letteratura — non esiste il muro contro cui temevamo di sbattere
 
-## SINTESI — Scenario B nelle configurazioni
+Nessun lavoro calcola l'IRR del retributivo **per fascia di reddito**. La letteratura
+(Castellino, Fornero, CeRP, Gronchi) disaggrega per coorte, categoria professionale, *pendenza
+della carriera* — **non per livello di reddito**. C'è un **vuoto**, non un muro.
 
-| Configurazione | q@5.000 | q@8.000 | Lordo | **Netto** |
+Il benchmark macro però esiste e **ci convalida**:
+- **Castellino & Fornero**: contribuzione effettiva **27%** nel 1992 contro un'aliquota di
+  equilibrio del **45-55%** ⇒ **circa metà della pensione media non era finanziata**. Il nostro
+  38-43% sulle pensioni ordinarie è in linea.
+- **Ferraresi & Fornero** (CeRP WP 2/00): NPVR del lavoratore rappresentativo **110-152%**,
+  IRR reale 2,2-3,5% — **sempre positivo**, come nel nostro modello col premio correlato.
+- **Gronchi (1995)**: il retributivo premia le **carriere ripide** — che è *esattamente* il
+  meccanismo del Test 1.
+
+---
+
+# TABELLA FINALE — quota non finanziata per fascia
+
+| Pensione/mese | (1) indip. pr0 | (2) + premio **correlato** | (3) + tetti storici + art.3-ter | (4) + ex-INPDAI |
 |---|---|---|---|---|
-| (1) Indipendente, premio 0 | 15,0% | 0,0% | 7,6 | **4,2 mld** |
-| (2) **+ premio CORRELATO** | 38,0% | 31,5% | 19,2 | **10,6 mld** |
-| — pendenza 0,7 | 32,2% | 23,5% | 16,7 | 9,2 mld |
-| — pendenza 1,3 | 43,0% | 38,2% | 20,9 | 11,5 mld |
-| (3) + tetti storici | *in corso* | | | |
-| (4) + quota A / INPDAI | *in corso* | | | |
-| **Scenario A (tetto)** | — | — | 31,1 | **17,1 mld** |
+| 2.000 | 38,0% | 40,9% | **40,9%** | n.q. |
+| 3.000 | 34,8% | 43,4% | **43,3%** | n.q. |
+| 4.000 | 25,3% | 40,7% | **40,5%** | n.q. |
+| 5.000 | 14,3% | 37,5% | **37,1%** | ↑ |
+| 8.000 | **0,0%** | 31,2% | **30,5%** | ↑ |
+| 10.000 | **0,0%** | 28,9% | **28,1%** | ↑ |
+| **media > 5.000** | **4,2%** | 26,3% | **25,8%** | ↑ |
 
-Con l'ipotesi realistica lo Scenario B rende **~€10,6 mld netti** (range 9,2-11,5) — il
-**62%** del tetto — restando quello **costituzionalmente difendibile**.
+La configurazione (4) non è quantificabile (manca la numerosità ex-INPDAI) ma la **direzione è
+certa: alza** la quota della coda alta.
 
-I test 2 e 3 spingono **entrambi nella stessa direzione**: alzano ancora l'eccesso dei
-ricchi. Il ribaltamento è già morto; questi possono solo rafforzare la leva.
+## Gettito dello Scenario B
+
+| Configurazione | Lordo | **Netto** |
+|---|---|---|
+| (1) indipendente, premio 0 | 7,6 | 4,2 mld |
+| **(2)-(3) premio correlato + norma verificata** | **19,2** | **~10,6 mld** |
+| — sensibilità sulla pendenza (0,7-1,3) | 16,7-20,9 | **9,2-11,5** |
+| (4) + ex-INPDAI | ↑ | ↑ |
+| **Scenario A (tetto)** | 31,1 | **17,1 mld** |
+
+# CONCLUSIONE
+
+**L'eccesso è positivo ovunque, grande (26-43%), decrescente nell'importo ma mai nullo.**
+La Leva D **è difendibile**: colpisce una platea che ha effettivamente ricevuto una generosità
+non finanziata di ~26% anche nella fascia alta.
+
+Lo Scenario B rende **~€10,6 mld netti** (range 9,2-11,5) — il **62% del tetto** — restando
+quello costituzionalmente blindato. La configurazione (4), se quantificata, lo alzerebbe.
+
+## Limiti dichiarati
+
+1. **Premio di carriera**: ipotesi dominante, calibrata (0 → +2,25), non osservata.
+   Sensibilità sulla pendenza (±30%) → gettito 9,2-11,5 mld.
+2. **Ex-INPDAI e fondi speciali**: non quantificati. Direzione nota (alzano).
+3. **Quota A sull'ultima retribuzione** (scatto finale di carriera): non modellata. Alza.
+4. **Tassi di capitalizzazione pre-1996**: controfattuale costruito, non dato osservato.
