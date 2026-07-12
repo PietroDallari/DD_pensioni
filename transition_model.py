@@ -168,10 +168,34 @@ class Assumptions:
     tetto_temporaneo_anni: int = 0    # 0 = strutturale; >0 = versione temporanea
 
     # --- Scenario B: eccesso misurato ---
-    # Da coorti di decorrenza (analisi/fase4_coorti.py): eccesso lordo 5,5-7,3 mld.
-    # NETTO del clawback (aliquota marginale 44%): 3,1-4,1.
-    gettito_eccesso_min: float = 3.1  # NETTO. Lordo = 5,5
-    gettito_eccesso_max: float = 4.1  # NETTO. Lordo = 7,3
+    # RICALIBRATO su serie salariali storiche vere (analisi/scenarioB_serie_salariali.py).
+    # La stima precedente (5,5-7,3 lordo / 3,1-4,1 netto) era SBAGLIATA: il calcolatore
+    # assumeva salari a +2% NOMINALE fisso su carriere 1970-2002, quando l'inflazione era
+    # ~10%/anno e i tassi di capitalizzazione 15-22%. Montante gonfiato -> eccesso ~zero.
+    #
+    # Sentiero salariale ora ancorato ad AMECO (Commissione UE), ITA.1.0.0.0.HWCDW
+    # "Nominal compensation per employee, total economy", annuale dal 1960.
+    # Crescita nominale: 1970-90 = 14,6%/anno | 1990-2010 = 3,1% | 2010-24 = 1,3%.
+    #
+    # ANCORA DI VALIDAZIONE SUPERATA: su carriera piena (40 anni, uscita a 65) il metodo
+    # produce un tasso di sostituzione contributivo del 75,6% (atteso 60-75%); a 38 anni
+    # e 63 anni, 63,2%. Il metodo non e' rotto.
+    # Il 41% del pensionato uscito a 58 anni con 33 di contributi e' quindi il RISULTATO,
+    # non un bug: 66% erogato contro 41% finanziato. E' il regalo retributivo.
+    #
+    # DUE IPOTESI-CHIAVE, dichiarate:
+    #   1. PREMIO DI CARRIERA (0/+1/+2 punti sopra l'aggregato). ATTENZIONE ALLA DIREZIONE:
+    #      poiche' il controfattuale e' ancorato alla RETRIBUZIONE FINALE (che l'inversione
+    #      retributiva ci da'), un premio piu' alto implica salari iniziali PIU' BASSI ->
+    #      montante piu' basso -> eccesso PIU' ALTO. Il premio quindi ALZA l'eccesso, non
+    #      lo abbassa. Premio 0 e' il bordo BASSO.
+    #   2. TASSI DI CAPITALIZZAZIONE PRE-1996: sono un controfattuale COSTRUITO dai livelli
+    #      di PIL nominale, non un dato osservato (il contributivo nasce nel 1996).
+    #
+    # Prelievo = min(eccesso, pensione - franchigia di 2.500 netti garantiti).
+    # Sotto ~5.700-7.900 EUR/mese morde la FRANCHIGIA; sopra, morde l'ECCESSO.
+    gettito_eccesso_min: float = 13.2  # NETTO (premio 0). Lordo 24,0
+    gettito_eccesso_max: float = 15.5  # NETTO (premio +2). Lordo 28,2
     anni_picco_eccesso: int = 25      # base piatta, poi declino lineare a zero
     anni_fine_eccesso: int = 50
 
