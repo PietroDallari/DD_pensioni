@@ -83,6 +83,25 @@ class Assumptions:
     aliquota_carveout: float = 0.25   # quanto dirottano; 8 punti restano in PAYG
     tfr_flusso_netto: float = 24.0    # 30 lordi - 6 Fondo Tesoreria perso
 
+    # --- CLAUSOLA DI SALVAGUARDIA (punto 3) ---
+    # L'autoammortamento del ponte NON e' una proprieta' del piano: e' condizionato agli
+    # IVS effettivi (punto di rottura ~212 mld, dentro l'intervallo di incertezza 210-223).
+    # La salvaguardia rende l'esito robusto invece che sperato: se lo stock BTP sfora la
+    # traiettoria di rientro, il carve-out RALLENTA temporaneamente (25% -> 27%), cioe'
+    # restano piu' punti in PAYG, finche' il saldo del Comparto 1 rientra.
+    # NOTA SULLA DIREZIONE. Le istruzioni dicevano "carve-out 25% -> 27%". Nel modello
+    # aliquota_carveout e' QUANTO SI DIROTTA ai fondi (25%, e i restanti 8 punti su 33
+    # restano in PAYG). Portarla a 27% dirotterebbe DI PIU', lasciando solo 6 punti in
+    # PAYG: peggiorerebbe il disavanzo invece di correggerlo (verificato: a IVS=205 lo
+    # stock finale passava da 1.395 a 2.233). La direzione voluta e' l'opposta:
+    # RIDURRE il carve-out a 23%, cosi' restano 10 punti in PAYG invece di 8.
+    # Costo per il lavoratore: 2 punti in meno versati al proprio fondo, per gli anni
+    # di attivazione. E' il prezzo esplicito della garanzia.
+    salvaguardia_attiva: bool = False
+    salv_soglia_stock_pil: float = 0.15   # attiva se stock BTP > 15% del PIL iniziale
+    salv_carveout_ridotto: float = 0.23   # si dirotta MENO: 10 punti restano in PAYG
+    salv_isteresi_pil: float = 0.10       # disattiva sotto il 10%: evita l'on/off
+
     # --- riconoscimento (Comparto 2) ---
     # VERIFICATO a due vie (analisi/fase3_passivita.py), convergenti al 12%:
     #   Via A (top-down): ADL Eurostat nasa_10_pens1 S13PS 2021 = 7.681 mld
@@ -139,19 +158,34 @@ def comparto_legacy(a: Assumptions) -> list[dict]:
     dall'avanzo. Flussi netti di cassa (clawback IRPEF incluso)."""
     rows = []
     btp = 0.0
+    allarme = False          # stato della salvaguardia (con isteresi)
+    anni_salvaguardia = 0
     n = a.orizzonte - a.anno_avvio + 1
     for i in range(n):
         anno = a.anno_avvio + i
         quota_residua = max(0.0, 1 - i / a.anni_estinzione_legacy)
         spesa_lorda = a.spesa_ivs_lorda * quota_residua
         clawback = a.clawback_irpef * quota_residua
+
+        # --- salvaguardia: feedback annuale con isteresi ---
+        carveout = a.aliquota_carveout
+        if a.salvaguardia_attiva:
+            soglia_on = a.salv_soglia_stock_pil * a.pil_iniziale
+            soglia_off = a.salv_isteresi_pil * a.pil_iniziale
+            if not allarme and btp > soglia_on:
+                allarme = True
+            elif allarme and btp < soglia_off:
+                allarme = False
+            if allarme:
+                carveout = a.salv_carveout_ridotto
+                anni_salvaguardia += 1
         # entrate che restano in PAYG:
         # - contributi dei non-contributivi (misti/retributivi al lavoro), che si
         #   estinguono con la loro uscita (~stessa scala del legacy, semplificazione)
         # - gli 8 punti dei contributivi (aliquota piena - carveout)
         # - effetto TFR (meno IVS da dirottare)
         contrib_altri = (a.contributi_ivs - a.contributi_contributivi) * quota_residua
-        otto_punti = a.contributi_contributivi * (1 - a.aliquota_carveout / a.aliquota_piena)
+        otto_punti = a.contributi_contributivi * (1 - carveout / a.aliquota_piena)
         # dopo l'estinzione del legacy il carve-out sale verso il 100%:
         # 8 punti e effetto-TFR si spengono linearmente negli anni 30-40
         rampa_uscita = max(0.0, min(1.0, 1 - (i - a.anni_estinzione_legacy) / 10))
@@ -163,7 +197,9 @@ def comparto_legacy(a: Assumptions) -> list[dict]:
         else:
             btp = max(0.0, btp + interessi - saldo)  # avanzo ammortizza
         rows.append(dict(anno=anno, spesa_legacy=spesa_lorda, entrate_payg=entrate,
-                         clawback_irpef=clawback, saldo_corrente=saldo, stock_btp=btp))
+                         clawback_irpef=clawback, saldo_corrente=saldo, stock_btp=btp,
+                         carveout=carveout, salvaguardia=int(allarme)))
+    rows[0]["anni_salvaguardia_totali"] = anni_salvaguardia
     return rows
 
 
