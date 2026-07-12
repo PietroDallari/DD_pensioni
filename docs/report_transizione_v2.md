@@ -1,6 +1,6 @@
 # Uscita dell'Italia dal Pay-As-You-Go
 
-Nota: tutte le cifre risalgono a fonti pubbliche citate nel testo o a stime con metodo dichiarato. Un solo aggiustamento e in corso (sottocontribuzioni, Allegato 16 del Rendiconto INPS, impatto ~−5 mld sugli IVS effettivi): le grandezze interessate sono marcate con (*) e non cambiano le conclusioni, che reggono su un margine di 24-30 mld.
+Nota: tutte le cifre risalgono a fonti pubbliche citate nel testo o a stime con metodo dichiarato; la loro derivazione e documentata nell'Appendice A e la replica integrale e possibile dal repository di progetto.
 
 ---
 
@@ -42,9 +42,9 @@ La spesa pensionistica italiana viene citata con numeri diversi perche misura pe
 
 Le differenze tornano: 39,0 mld tra COFOG e INPS sono casse professionali e schemi non-INPS; 12,2 mld tra INPS e MEF sono prestazioni non imponibili. Dentro la spesa INPS, il Rendiconto separa cio che i contributi devono coprire da cio che e fiscalita: 65,9 mld di quote di pensione a carico GIAS, piu 29,3 mld di assistenza pura fuori aggregato (invalidita civile 22,9, assegni sociali 6,4). La spesa a carico dei contributi e quindi 254,7 mld.
 
-Sul lato entrate, le contribuzioni esposte (284,0) sono al lordo di 33,5 mld di sgravi che i datori e i lavoratori non versano e lo Stato rimborsa — fiscalita travestita da contributi, come la stessa Nota integrativa riconosce (p.106: la rilevazione tra le poste correttive "e finalizzata a correggere la duplicazione di calcolo"). La decomposizione integrale degli sgravi e pubblicata nell'Allegato 15 (pp. 164-167): 18,4 mld certamente IVS (di cui 17,2 l'esonero-cuneo dei lavoratori), 9,0 certamente non-IVS, 6,2 su misure miste. Ne risultano contributi IVS effettivi di 219-225 mld a consuntivo 2024 (*).
+Sul lato entrate, le contribuzioni esposte (284,0) sono al lordo di 33,5 mld di sgravi che i datori e i lavoratori non versano e lo Stato rimborsa — fiscalita travestita da contributi, come la stessa Nota integrativa riconosce (p.106: la rilevazione tra le poste correttive "e finalizzata a correggere la duplicazione di calcolo"). La decomposizione integrale degli sgravi e pubblicata nell'Allegato 15 (pp. 164-167): 18,4 mld certamente IVS (di cui 17,2 l'esonero-cuneo dei lavoratori), 9,0 certamente non-IVS, 6,2 su misure miste. Ne risultano contributi IVS effettivi di 219-225 mld a consuntivo 2024.
 
-Due numeri fiscali completano il quadro. Il gettito IRPEF effettivo sui redditi da pensione e 65,1 mld (57,4 di imposta netta piu 7,7 di addizionali; MEF, anno d'imposta 2023) — non gli 78,4 di imposta lorda, che ignorano 22,8 mld di detrazioni. E dalla Legge di Bilancio 2025 l'esonero-cuneo e stato trasformato in beneficio fiscale: non transita piu dalle entrate contributive (RT A.C. 2112-bis, pp. 13-17), che risalgono quindi strutturalmente a 236-242 mld dal 2025 (*).
+Due numeri fiscali completano il quadro. Il gettito IRPEF effettivo sui redditi da pensione e 65,1 mld (57,4 di imposta netta piu 7,7 di addizionali; MEF, anno d'imposta 2023) — non gli 78,4 di imposta lorda, che ignorano 22,8 mld di detrazioni. E dalla Legge di Bilancio 2025 l'esonero-cuneo e stato trasformato in beneficio fiscale: non transita piu dalle entrate contributive (RT A.C. 2112-bis, pp. 13-17), che risalgono quindi strutturalmente a 236-242 mld dal 2025.
 
 Nota di metodo, perche l'errore e ricorrente: in tre occasioni distinte la verifica ha trovato lo stesso scarto tra effetto netto di finanza pubblica e voce lorda di conto (imposta lorda vs netta; costo netto del cuneo vs minori entrate contributive; previsione di RT vs consuntivo). Per il conto INPS vale sempre il consuntivo lordo della voce, non l'effetto netto sul saldo.
 
@@ -54,19 +54,19 @@ Due retoriche opposte, entrambe smentite dai numeri riconciliati.
 
 "Le pensioni divorano il bilancio": falso nel perimetro. La spesa a carico dei contributi e 254,7, non 360; circa 95 mld del totale sono assistenza e integrazione fiscale, da esporre come linea separata e permanente che nessuna riforma previdenziale elimina.
 
-"La previdenza e quasi in equilibrio": vero solo a meta, e solo da quest'anno. Il disavanzo previdenziale (spesa a carico contributi meno IVS effettivi) e di 30-36 mld a consuntivo 2024, e scende a 13-19 mld in via strutturale dal 2025 (*) — non per un miglioramento della previdenza, ma perche la fiscalizzazione del cuneo ha spostato 17 mld di sgravi dal conto contributivo a quello fiscale. La formulazione corretta: disavanzo previdenziale modesto e in riduzione contabile; il grosso della fiscalita nel perimetro pensionistico e assistenza.
+"La previdenza e quasi in equilibrio": vero solo a meta, e solo da quest'anno. Il disavanzo previdenziale (spesa a carico contributi meno IVS effettivi) e di 30-36 mld a consuntivo 2024, e scende a 13-19 mld in via strutturale dal 2025 — non per un miglioramento della previdenza, ma perche la fiscalizzazione del cuneo ha spostato 17 mld di sgravi dal conto contributivo a quello fiscale. La formulazione corretta: disavanzo previdenziale modesto e in riduzione contabile; il grosso della fiscalita nel perimetro pensionistico e assistenza.
 
 | Saldo previdenziale | Consuntivo 2024 | Strutturale 2025+ |
 |---|---|---|
 | Spesa a carico contributi | 254,7 | ~254 (in estinzione col legacy) |
-| Contributi IVS effettivi (*) | 219-225 | 236-242 |
+| Contributi IVS effettivi | 219-225 | 236-242 |
 | **Disavanzo** | **30-36** | **13-19** |
 
 ## 5. Le leve
 
 ### A — Carve-out al 25% con salvaguardia automatica
 
-I contributivi dirottano i propri contributi sui fondi al 25% invece del 33%: al rendimento di mercato basta per una pensione superiore (§1), e gli 8 punti restano in PAYG a finanziare il legacy. Il piano incorpora una clausola di salvaguardia: se i contributi IVS effettivi realizzati scendono sotto la soglia di autoammortamento del ponte (212 mld, §7), l'aliquota di carve-out rallenta temporaneamente (25→27) finche il saldo rientra. Nel range plausibile la clausola non si attiva mai: copre il rischio normativo (una futura reintroduzione di sgravi contributivi), non quello statistico.
+I contributivi dirottano i propri contributi sui fondi al 25% invece del 33%: al rendimento di mercato basta per una pensione superiore (§1), e gli 8 punti restano in PAYG a finanziare il legacy. Il piano incorpora una clausola di salvaguardia: se i contributi IVS effettivi realizzati scendono sotto la soglia di autoammortamento del ponte (212 mld, §7), l'aliquota di carve-out si riduce temporaneamente (25→23), lasciando in PAYG 10 punti invece di 8, finche il saldo rientra. Nel range plausibile la clausola non si attiva mai: copre il rischio normativo (una futura reintroduzione di sgravi contributivi), non quello statistico.
 
 ### B — Flusso TFR ai fondi
 
@@ -98,13 +98,13 @@ Con i parametri verificati (vintage 2025+), il profilo della transizione avviata
 
 Il punto critico di ogni transizione e il debito ponte. Con i contributi IVS effettivi verificati, il verdetto del modello e affermativo su tutto l'intervallo di incertezza:
 
-| IVS 2025+ (*) | Disavanzo iniziale | Picco BTP | % PIL | Estinto |
+| IVS 2025+ | Disavanzo iniziale | Picco BTP | % PIL | Estinto |
 |---|---|---|---|---|
 | 236,1 (peggiore) | −17,5 | 103 mld | ~5% | si |
 | 237,3 (centrale) | −16,7 | 94 mld | ~4% | si |
 | 242,3 (migliore) | −13,3 | 61 mld | ~3% | si |
 
-Il punto di rottura — il livello di IVS sotto il quale il ponte non si estingue — e 212 mld: tutto il vintage strutturale sta 24-30 mld sopra (*). La qualificazione onesta: questo esito vale a legislazione vigente. La migrazione del cuneo al fisco e una scelta della LdB 2025 che un futuro legislatore puo invertire; e il rischio coperto dalla clausola di salvaguardia (§5-A), che nel range plausibile resta assicurazione pura. Il picco di 3-5 punti di PIL, riassorbito entro pochi anni, e una dimensione da mercato domestico — non la gobba da 60 punti delle stime preliminari, che nasceva da un perimetro di spesa gonfiato dall'assistenza e da contributi sottostimati.
+Il punto di rottura — il livello di IVS sotto il quale il ponte non si estingue — e 212 mld: tutto il vintage strutturale sta 24-30 mld sopra. La qualificazione onesta: questo esito vale a legislazione vigente. La migrazione del cuneo al fisco e una scelta della LdB 2025 che un futuro legislatore puo invertire; e il rischio coperto dalla clausola di salvaguardia (§5-A), che nel range plausibile resta assicurazione pura. Il picco di 3-5 punti di PIL, riassorbito entro pochi anni, e una dimensione da mercato domestico — non la gobba da 60 punti delle stime preliminari, che nasceva da un perimetro di spesa gonfiato dall'assistenza e da contributi sottostimati.
 
 ## 8. Il dato che manca
 
