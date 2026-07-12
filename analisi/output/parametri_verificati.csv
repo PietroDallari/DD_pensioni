@@ -1,0 +1,10 @@
+parametro,valore,unita,anno,fonte,flag_qualita
+spesa_pensioni_vecchiaia_superstiti,359.572,mld EUR,2024,Eurostat gov_10a_exp GF1002+GF1003,verificato
+massa_lorda_pensionistica_da_distribuzione,355.41401703014407,mld EUR,2024,INPS 1824 rivalutato HICP,stima_esplicita
+clawback_irpef_su_pensioni,78.79444655257221,mld EUR,2024,bottom-up da distribuzione INPS + IRPEF del calcolatore,stima_esplicita
+beneficiari_totali,16.064508,mln,2016,INPS open data 1824,verificato
+nozionale_payg_reale,0.0,%,1996-2025,tassi ufficiali capitalizzazione vs HICP Eurostat,verificato
+quota_spesa_regime_retributivo_e_misto,98.9,%,2017,INPS open data dataset 1648,verificato
+quota_previdenziale_vs_gias,,mld EUR,,Rendiconto generale INPS (PDF),da_verificare
+passivita_riconoscimento,,mld EUR,,RGS/NADEF o stima bottom-up,da_verificare
+platea_sopra_2500_netti,,mln,2016,INPS 1824 — classe superiore APERTA,non_calcolabile

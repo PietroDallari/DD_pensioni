@@ -1,0 +1,10 @@
+voce,importo_mld,anno,fonte,flag_qualita
+Vecchiaia (old age),306.359,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+Superstiti,53.213,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+Malattia e invalidita,37.782,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+Famiglia e figli,32.266,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+Disoccupazione,20.257,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+Esclusione sociale,14.982,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+Protezione sociale (totale),468.135,2024,"Eurostat gov_10a_exp (COFOG, S13)",verificato
+>> PENSIONI (vecchiaia + superstiti),359.572,2024,Eurostat gov_10a_exp (somma GF1002+GF1003),verificato
+>> di cui quota previdenziale vs GIAS,,2024,"Rendiconto generale INPS (PDF, non ancora estratto)",da_verificare
