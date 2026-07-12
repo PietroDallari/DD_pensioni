@@ -63,22 +63,36 @@ class Assumptions:
     anni_estinzione_legacy: int = 30  # spesa legacy lineare a zero
 
     # --- contributi ---
-    # VERIFICATO — e il 240 era SBAGLIATO (troppo alto).
-    # INPS Rendiconto 2024, Nota integrativa:
-    #   entrate contributive totali (Tab.16 p.45) : 284,0 mld
-    #   MA al LORDO di 33,5 mld di SGRAVI che i datori non versano e lo Stato rimborsa.
-    #   INPS lo dichiara (p.106): gli sgravi "vengono rilevati nell'ambito delle entrate
-    #   contributive E ANCHE nei trasferimenti dal bilancio dello Stato... per correggere
-    #   la duplicazione di calcolo".
-    #   Solo il 77,1% dei contributi uniemens e' pensionistico (Tab.19 p.49: 136,963
-    #   su 177,551). Il resto finanzia GPT, TFR, fondi di solidarieta'.
-    #   Limite superiore IVS = 136,963 + 106,496 (tutto il non-uniemens contato come IVS,
-    #   ipotesi generosa) = 243,5 — ancora al lordo degli sgravi.
-    #   Al netto degli sgravi gravanti sulla base IVS (75%): ~218.
-    # NON PUBBLICATO: la ripartizione degli sgravi per gestione. Il numero puntuale non
-    # e' derivabile dai documenti; l'intervallo e' 210-223.
-    contributi_ivs: float = 218.3     # centrale. Intervallo 210-223.
-    contributi_contributivi: float = 91.0   # quota dirottabile, scalata sulla base
+    # ================= CONTRIBUTI IVS — DUE VINTAGE DOCUMENTATI =================
+    # Il 240 originario era SBAGLIATO (troppo alto).
+    #
+    # Limite superiore IVS (INPS Rendiconto 2024, Nota integrativa):
+    #   contributi uniemens PENSIONISTICI (Tab.19 p.49)      136,963
+    #   + non-uniemens (ex-INPDAP, autonomi, agricoli...)    106,496  [tutto contato
+    #                                                                  come IVS: generoso]
+    #   = 243,459 mld — ma AL LORDO degli sgravi.
+    #
+    # Sgravi contributivi 2024 (Nota integr. p.106): 33,537 mld. INPS dichiara che
+    # sono contati DUE VOLTE (entrate contributive + trasferimenti dallo Stato).
+    #   di cui ESONERO IVS LATO LAVORATORE (taglio del cuneo 6%/7%): 13,535 mld
+    #     Fonte: Camera, Servizio Bilancio, "LdB 2024 - A.C.1627 - Profili finanziari",
+    #     p.21-22: minori entrate contributive cassa 2024 = 13.535 mln (competenza
+    #     14.736). Confermato IVS lato lavoratore (6 punti fino a 2.692 EUR/mese,
+    #     7 fino a 1.923). Norma: L.213/2023 art.1 c.15.
+    #   sgravi RESIDUI (Decontribuzione Sud, assunzioni, madri...): 20,002 mld
+    #     [quota IVS non pubblicata -> resta l'incertezza]
+    #
+    # VINTAGE 2024 (consuntivo)  : 243,459 - 13,535 - q*20,002  =>  210-220
+    # VINTAGE 2025+ (STRUTTURALE): 243,459 - q*20,002           =>  223,5-233,5
+    #   Dal 2025 l'esonero e' MIGRATO AL FISCO (L.207/2024 c.4-9: somma esente +
+    #   detrazione IRPEF). La RT della LdB 2025 (Camera, A.C.2112-bis, p.13-17) espone
+    #   SOLO "minori entrate tributarie" e "maggiori spese correnti": NESSUNA voce di
+    #   entrate contributive. Quei 13,5 mld tornano a essere contributi versati.
+    #
+    # Il modello del ponte usa il vintage 2025+ (e' la serie strutturale).
+    # Punto di rottura del ponte: 212,2 mld. TUTTO l'intervallo 2025+ sta sopra.
+    contributi_ivs: float = 228.5     # vintage 2025+, centrale. Intervallo 223,5-233,5.
+    contributi_contributivi: float = 95.3   # quota dirottabile, scalata sulla base
     aliquota_piena: float = 0.33
     aliquota_carveout: float = 0.25   # quanto dirottano; 8 punti restano in PAYG
     tfr_flusso_netto: float = 24.0    # 30 lordi - 6 Fondo Tesoreria perso
@@ -199,8 +213,7 @@ def comparto_legacy(a: Assumptions) -> list[dict]:
         rows.append(dict(anno=anno, spesa_legacy=spesa_lorda, entrate_payg=entrate,
                          clawback_irpef=clawback, saldo_corrente=saldo, stock_btp=btp,
                          carveout=carveout, salvaguardia=int(allarme)))
-    rows[0]["anni_salvaguardia_totali"] = anni_salvaguardia
-    return rows
+    return rows   # anni di salvaguardia: sum(r["salvaguardia"] for r in rows)
 
 
 # ----------------------------------------------------------------------
