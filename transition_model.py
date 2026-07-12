@@ -63,8 +63,22 @@ class Assumptions:
     anni_estinzione_legacy: int = 30  # spesa legacy lineare a zero
 
     # --- contributi ---
-    contributi_ivs: float = 240.0     # totale IVS
-    contributi_contributivi: float = 100.0  # quota dei contributivi puri (dirottabile)
+    # VERIFICATO — e il 240 era SBAGLIATO (troppo alto).
+    # INPS Rendiconto 2024, Nota integrativa:
+    #   entrate contributive totali (Tab.16 p.45) : 284,0 mld
+    #   MA al LORDO di 33,5 mld di SGRAVI che i datori non versano e lo Stato rimborsa.
+    #   INPS lo dichiara (p.106): gli sgravi "vengono rilevati nell'ambito delle entrate
+    #   contributive E ANCHE nei trasferimenti dal bilancio dello Stato... per correggere
+    #   la duplicazione di calcolo".
+    #   Solo il 77,1% dei contributi uniemens e' pensionistico (Tab.19 p.49: 136,963
+    #   su 177,551). Il resto finanzia GPT, TFR, fondi di solidarieta'.
+    #   Limite superiore IVS = 136,963 + 106,496 (tutto il non-uniemens contato come IVS,
+    #   ipotesi generosa) = 243,5 — ancora al lordo degli sgravi.
+    #   Al netto degli sgravi gravanti sulla base IVS (75%): ~218.
+    # NON PUBBLICATO: la ripartizione degli sgravi per gestione. Il numero puntuale non
+    # e' derivabile dai documenti; l'intervallo e' 210-223.
+    contributi_ivs: float = 218.3     # centrale. Intervallo 210-223.
+    contributi_contributivi: float = 91.0   # quota dirottabile, scalata sulla base
     aliquota_piena: float = 0.33
     aliquota_carveout: float = 0.25   # quanto dirottano; 8 punti restano in PAYG
     tfr_flusso_netto: float = 24.0    # 30 lordi - 6 Fondo Tesoreria perso
