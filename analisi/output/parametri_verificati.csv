@@ -1,10 +1,19 @@
 parametro,valore,unita,anno,fonte,flag_qualita
-spesa_pensioni_vecchiaia_superstiti,359.572,mld EUR,2024,Eurostat gov_10a_exp GF1002+GF1003,verificato
-massa_lorda_pensionistica_da_distribuzione,355.41401703014407,mld EUR,2024,INPS 1824 rivalutato HICP,stima_esplicita
-clawback_irpef_su_pensioni,78.79444655257221,mld EUR,2024,bottom-up da distribuzione INPS + IRPEF del calcolatore,stima_esplicita
-beneficiari_totali,16.064508,mln,2016,INPS open data 1824,verificato
-nozionale_payg_reale,0.0,%,1996-2025,tassi ufficiali capitalizzazione vs HICP Eurostat,verificato
-quota_spesa_regime_retributivo_e_misto,98.9,%,2017,INPS open data dataset 1648,verificato
-quota_previdenziale_vs_gias,,mld EUR,,Rendiconto generale INPS (PDF),da_verificare
-passivita_riconoscimento,,mld EUR,,RGS/NADEF o stima bottom-up,da_verificare
-platea_sopra_2500_netti,,mln,2016,INPS 1824 — classe superiore APERTA,non_calcolabile
+spesa_pensioni_cofog,359.59999999999997,mld EUR,2024,Eurostat gov_10a_exp GF1002+GF1003,verificato
+spesa_pensioni_inps,320.593,mld EUR,2024,"INPS Rendiconto 2024, Nota integrativa Tab.38 p.101",verificato
+spesa_pensioni_a_carico_contributi,254.669,mld EUR,2024,"INPS: 320,593 - (72,340 GIAS oneri pens. - 6,416 assegni sociali)",derivato
+quote_pensione_a_carico_gias,65.924,mld EUR,2024,"INPS Rendiconto 2024, Gestione 24 GIAS, Allegato 13A",verificato
+clawback_irpef,65.09100000000001,mld EUR,2023,"MEF Dichiarazioni 2024 (a.i.2023): imposta netta 57,365 + add.reg 5,438 + add.com 2,288",verificato
+irpef_trattenuta_alla_fonte_inps,71.065,mld EUR,2024,"INPS Rendiconto 2024, Nota integrativa Tab.38 p.101",verificato
+prestazioni_assistenziali_non_imponibili,29.267000000000003,mld EUR,2024,"INPS Rendiconto 2024 Tab.38: assegni/pensioni sociali 6,411 + invalidita' civile 22,856",verificato
+passivita_riconoscimento,2450.0,mld EUR,2021,"Via A: Eurostat nasa_10_pens1 S13PS F63_LS 7.681 - PV legacy 3.682, misti 35% = 2.599; Via B bottom-up = 2.297. Divergenza 12%.",verificato_due_vie
+adl_totale,7681.0,mld EUR,2021,"Eurostat nasa_10_pens1, penscheme=S13PS, na_item=F63_LS",verificato
+nozionale_payg_reale,0.0,%,2006-2025,"tassi ufficiali di capitalizzazione (nota ISTAT/Min.Lavoro) vs HICP Eurostat: -0,21%",verificato
+quota_spesa_retributivo_e_misto,98.9,%,2017,INPS open data dataset 1648 (regime di liquidazione),verificato
+beneficiari_totali,16.06,mln,2016,INPS open data dataset 1824,verificato
+platea_tetto_2500_netti,1.24,mln,2024,"Pareto spezzata ancorata (alpha1=2,75 su INPS 2017; alpha2=4,15 su coda 2014)",stima_ancorata
+gettito_scenarioA_lordo,31.1,mld EUR,2024,tetto 2.500 netti su coda ancorata,stima_ancorata
+gettito_scenarioA_netto,17.1,mld EUR,2024,"al netto del clawback perso (aliquota marginale 44,1%)",stima_ancorata
+gettito_scenarioB_lordo_min,5.5,mld EUR,2024,coorti di decorrenza INPS 1580 (copertura parziale: dipendenti pubblici),stima_bordo_basso
+gettito_scenarioB_lordo_max,7.3,mld EUR,2024,coorti di decorrenza INPS 1580 (copertura parziale: dipendenti pubblici),stima_bordo_basso
+aliquota_marginale_recupero,44.1,%,2024,derivata numericamente dalla funzione fiscale sulle fasce colpite,derivato

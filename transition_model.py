@@ -39,11 +39,18 @@ class Assumptions:
     # Cross-check indipendente: la massa lorda ricostruita dalla distribuzione INPS
     # (perimetro persone, rivalutata a prezzi 2024) da' 355,4 -> scarto 1,2%.
     spesa_ivs_lorda: float = 359.6
-    # NON RICONCILIATO: la stima bottom-up dalla distribuzione (IRPEF + addizionali
-    # applicate alle fasce) da' 78,8 mld, contro i 55-60 attesi dalle fonti MEF.
-    # Divergenza del 30% non spiegata: finche' non e' chiusa, il valore resta
-    # quello atteso e l'output del modello NON e' citabile su questa riga.
-    clawback_irpef: float = 57.0      # DA VERIFICARE: bottom-up=78,8 vs atteso 55-60
+    # VERIFICATO E RICONCILIATO (analisi/riconciliazione_perimetri.py).
+    # MEF, Dichiarazioni 2024 (a.i. 2023), contribuenti con reddito PREVALENTE da
+    # pensione: imposta netta 57,365 + addizionale regionale 5,438 + comunale 2,288.
+    # I tre numeri che sembravano in conflitto erano TRE COSE DIVERSE:
+    #   78,4 = imposta LORDA (e il mio bottom-up misurava questa: 78,8)
+    #   71,1 = ritenuta alla fonte INPS sui trattamenti (Rendiconto 2024 Tab.38 p.101)
+    #   57,4 = imposta NETTA, dopo 22,8 mld di detrazioni  <- il gettito vero
+    # Lo scarto del 30% stava tutto nelle DETRAZIONI: la funzione fiscale del
+    # calcolatore ne implicava ~7 mld contro i 22,8 registrati dal MEF.
+    # NB: la ricalibrazione tocca l'aliquota MEDIA, non la MARGINALE (le detrazioni si
+    # azzerano sopra i 50.000): il rapporto netto/lordo degli scenari (55%) non cambia.
+    clawback_irpef: float = 65.1
     anni_estinzione_legacy: int = 30  # spesa legacy lineare a zero
 
     # --- contributi ---
