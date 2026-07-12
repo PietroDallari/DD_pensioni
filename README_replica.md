@@ -72,6 +72,34 @@ $PY transition_model.py --csv analisi/output
 | **Eurostat** | COFOG (`gov_10a_exp`), HICP (`prc_hicp_aind`), pension entitlements (`nasa_10_pens1`), occupati (`lfsa_egan`) |
 | **AMECO** (Commissione UE) | `ITA.1.0.0.0.HWCDW` — retribuzioni nominali per occupato, dal 1960 |
 
+## ⚠️ Il commit upstream è PINNATO
+
+`esegui_pipeline_calcolatore.sh` fa `git checkout 1007648` sul repo di Nazareno. **Non è
+pignoleria**: la regressione da clone pulito ha mostrato che l'upstream si muove — al
+12/07/2026 aveva 5 commit successivi, fra cui *«Refine pension calculator contribution
+modelling»* e *«Fix simplified contribution-year scaling»*, che **cambiano i numeri** (es.
+montante dello scenario `carriera_lunga_mista`: 630.060 → 660.875).
+
+Senza pin, chiunque cloni ottiene risultati diversi da quelli del report.
+
+**Per aggiornare il pin**: cambiare l'hash e **riverificare** i numeri, non solo rigirarli.
+L'upstream ha correzioni al modello contributivo che **non abbiamo incorporato** — è una voce
+del backlog in `analisi/FASE2_estensioni.md`.
+
+## Regressione — verificata
+
+Da clone pulito, con il pin attivo, la pipeline riproduce:
+
+| Numero | Valore |
+|---|---|
+| Spesa pensioni COFOG 2024 | €359,6 mld |
+| Clawback IRPEF (MEF) | €65,1 mld |
+| Spesa a carico dei contributi | €254,7 mld |
+| Passività di riconoscimento (Via A) | €2.599 mld |
+| Picco BTP del ponte | €94 mld (4% del PIL), 2027 |
+| Profilo mediano: PAYG vs proposta | €22.650 → €27.239 (**+20%**) |
+| Test del calcolatore | **17/17 passati** |
+
 ## Due note metodologiche che il lettore deve conoscere
 
 1. **I tassi di capitalizzazione sono quelli UFFICIALI**, non ricalcolati. Il calcolatore
