@@ -1,5 +1,5 @@
 parametro,valore,unita,anno,fonte,flag_qualita
-spesa_pensioni_cofog,359.59999999999997,mld EUR,2024,Eurostat gov_10a_exp GF1002+GF1003,verificato
+spesa_pensioni_cofog,359.6,mld EUR,2024,Eurostat gov_10a_exp GF1002+GF1003,verificato
 spesa_pensioni_inps,320.593,mld EUR,2024,"INPS Rendiconto 2024, Nota integrativa Tab.38 p.101",verificato
 spesa_pensioni_a_carico_contributi,254.669,mld EUR,2024,"INPS: 320,593 - (72,340 GIAS oneri pens. - 6,416 assegni sociali)",derivato
 quote_pensione_a_carico_gias,65.924,mld EUR,2024,"INPS Rendiconto 2024, Gestione 24 GIAS, Allegato 13A",verificato
@@ -9,7 +9,7 @@ prestazioni_assistenziali_non_imponibili,29.267000000000003,mld EUR,2024,"INPS R
 passivita_riconoscimento,2450.0,mld EUR,2021,"Via A: Eurostat nasa_10_pens1 S13PS F63_LS 7.681 - PV legacy 3.682, misti 35% = 2.599; Via B bottom-up = 2.297. Divergenza 12%.",verificato_due_vie
 adl_totale,7681.0,mld EUR,2021,"Eurostat nasa_10_pens1, penscheme=S13PS, na_item=F63_LS",verificato
 nozionale_payg_reale,0.0,%,2006-2025,"tassi ufficiali di capitalizzazione (nota ISTAT/Min.Lavoro) vs HICP Eurostat: -0,21%",verificato
-quota_spesa_retributivo_e_misto,98.9,%,2017,INPS open data dataset 1648 (regime di liquidazione),verificato
+quota_spesa_retributivo_e_misto,96.96,%,2026,"INPS Osservatorio, cubo 389 (Pensioni per regime di liquidazione), vigenti 1.1.2026, gestioni private. BIAS: esclude Gestione Dipendenti Pubblici (piu retributiva) -> e un BORDO BASSO",verificato
 beneficiari_totali,16.06,mln,2016,INPS open data dataset 1824,verificato
 platea_tetto_2500_netti,1.24,mln,2024,"Pareto spezzata ancorata (alpha1=2,75 su INPS 2017; alpha2=4,15 su coda 2014)",stima_ancorata
 gettito_scenarioA_lordo,31.1,mld EUR,2024,tetto 2.500 netti su coda ancorata,stima_ancorata
