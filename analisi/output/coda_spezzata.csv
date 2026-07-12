@@ -1,0 +1,2 @@
+scenario,gettito_mld_anno,platea_mln,alpha1_3500_10000,alpha2_oltre_10000,cross_check_sopra_100k_predetto,cross_check_sopra_100k_osservato,fonti,flag_qualita
+A_tetto_2500_netti_coda_spezzata,14.720184324446311,0.711,2.7546080116959355,4.145050332803283,133953.822,16.000-40.000,INPS 2017 (711k>=3.500; 266k>=5.000); coda 2014 (13k>=10.000); L.145/2018 c.261 per il cross-check,stima_ancorata
