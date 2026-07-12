@@ -59,19 +59,19 @@ class Assumptions:
     exit_levy: float = 0.05           # quota di nozionale NON riconosciuta (0.05 = 95% riconosciuto)
 
     # --- Scenario A: tetto 2500 netti ---
-    # STIMATO ma NON IDENTIFICATO. La classe INPS superiore e' APERTA ("3.000 e piu'"):
-    # il tetto morde l'ECCESSO sopra soglia, che dipende dalla forma della coda, che
-    # non e' osservabile. Fit di Pareto sulla media di classe (alpha=15,0) -> 3,2 mld.
-    # Ma il risultato e' interamente condizionato a quella media, che e' un valore
-    # DERIVATO, non pubblicato. Sensibilita' (analisi/fase3_scenari.py):
-    #     media classe 3.935 -> alpha 15,0 ->  3,2 mld   <- stima centrale
-    #     media classe 4.600 -> alpha  5,0 ->  8,5 mld
-    #     media classe 5.200 -> alpha  3,4 -> 13,2 mld
-    #     media classe 6.000 -> alpha  2,6 -> 19,5 mld
-    #     media classe 7.000 -> alpha  2,1 -> 27,5 mld
-    # Intervallo plausibile 3-28 mld: lo Scenario A NON e' quantificabile sui soli
-    # open data. Serve la distribuzione dentro la classe aperta (microdati INPS).
-    gettito_tetto2500: float = 3.2    # bordo basso dell'intervallo, NON il valore atteso
+    # ANCORATO su due punti osservati (analisi/fase3b_coda_ancorata.py):
+    #   N(>= 3.000 EUR/mese) = 1.104.624   INPS open data 1824 (2016)
+    #   N(>= 5.000 EUR/mese) =   266.180   INPS, "Prestazioni pensionistiche e
+    #                                      beneficiari" 2017 (1,7% dei pensionati)
+    # Stesso perimetro (persone, non singole pensioni) -> Pareto alpha = 2,79.
+    # CROSS-CHECK indipendente: la coda cosi' calibrata predice ~80k pensionati sopra
+    # 100.000 EUR lordi/anno, contro i 16-40k effettivamente colpiti dal contributo di
+    # solidarieta' 2019 (L.145/2018 c.261) — coerente, dato che quel perimetro escludeva
+    # superstiti, invalidita' e contributivo puro. Il cross-check RIGETTA l'ancora
+    # alternativa (400k sopra 5.000, stampa 2023): implicherebbe 170k sopra 100k/anno,
+    # 4,2x l'osservato.
+    # Intervallo difendibile: 13,5 (alpha 3,36) - 17,5 (alpha 2,79) mld/anno.
+    gettito_tetto2500: float = 15.0   # centro dell'intervallo ancorato 13,5-17,5
     tetto_temporaneo_anni: int = 0    # 0 = strutturale; >0 = versione temporanea
 
     # --- Scenario B: eccesso misurato ---
