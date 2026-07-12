@@ -63,36 +63,40 @@ class Assumptions:
     anni_estinzione_legacy: int = 30  # spesa legacy lineare a zero
 
     # --- contributi ---
-    # ================= CONTRIBUTI IVS — DUE VINTAGE DOCUMENTATI =================
-    # Il 240 originario era SBAGLIATO (troppo alto).
+    # ============ CONTRIBUTI IVS — DECOMPOSIZIONE UFFICIALE DEGLI SGRAVI ============
+    # INPS PUBBLICA la decomposizione dei 33,5 mld di sgravi: non serviva ricostruirla.
+    # Fonte: Rendiconto generale 2024, Allegato 24 (GIAS), ALLEGATO 15 "Poste correttive
+    # e compensative delle entrate correnti", pp.164-167. Totale 33.537.246.069,82 —
+    # coincide esattamente con la Nota integrativa p.106.
     #
-    # Limite superiore IVS (INPS Rendiconto 2024, Nota integrativa):
-    #   contributi uniemens PENSIONISTICI (Tab.19 p.49)      136,963
-    #   + non-uniemens (ex-INPDAP, autonomi, agricoli...)    106,496  [tutto contato
-    #                                                                  come IVS: generoso]
-    #   = 243,459 mld — ma AL LORDO degli sgravi.
+    # Limite superiore IVS (Nota integr. Tab.19 p.49: 136,963 uniemens pensionistici
+    # + 106,496 non-uniemens contato tutto come IVS) = 243,459 mld, LORDO sgravi.
     #
-    # Sgravi contributivi 2024 (Nota integr. p.106): 33,537 mld. INPS dichiara che
-    # sono contati DUE VOLTE (entrate contributive + trasferimenti dallo Stato).
-    #   di cui ESONERO IVS LATO LAVORATORE (taglio del cuneo 6%/7%): 13,535 mld
-    #     Fonte: Camera, Servizio Bilancio, "LdB 2024 - A.C.1627 - Profili finanziari",
-    #     p.21-22: minori entrate contributive cassa 2024 = 13.535 mln (competenza
-    #     14.736). Confermato IVS lato lavoratore (6 punti fino a 2.692 EUR/mese,
-    #     7 fino a 1.923). Norma: L.213/2023 art.1 c.15.
-    #   sgravi RESIDUI (Decontribuzione Sud, assunzioni, madri...): 20,002 mld
-    #     [quota IVS non pubblicata -> resta l'incertezza]
+    # Decomposizione dei 33,537:
+    #   IVS CERTO     18,374 (54,8%) — cuneo lavoratore 17,206 + lavoratrici madri
+    #                                  1,100 + coltivatori under40 0,067 + altri
+    #   NON-IVS CERTO  8,987 (26,8%) — prestazioni temporanee (L.266/2005, L.388/2000,
+    #                                  L.296/2006), Fondo garanzia TFR, riduzione CIG
+    #   MISTA          6,175 (18,4%) — Decontribuzione Sud 3,748, esonero giovani 1,877,
+    #                                  donne 0,102, marittimi 0,313... esoneri sui
+    #                                  contributi datoriali COMPLESSIVI: la ripartizione
+    #                                  IVS/non-IVS al loro interno NON e' pubblicata.
+    #   => quota IVS degli sgravi: 54,8% (mista=0) - 73,2% (mista=100%)
     #
-    # VINTAGE 2024 (consuntivo)  : 243,459 - 13,535 - q*20,002  =>  210-220
-    # VINTAGE 2025+ (STRUTTURALE): 243,459 - q*20,002           =>  223,5-233,5
-    #   Dal 2025 l'esonero e' MIGRATO AL FISCO (L.207/2024 c.4-9: somma esente +
-    #   detrazione IRPEF). La RT della LdB 2025 (Camera, A.C.2112-bis, p.13-17) espone
-    #   SOLO "minori entrate tributarie" e "maggiori spese correnti": NESSUNA voce di
-    #   entrate contributive. Quei 13,5 mld tornano a essere contributi versati.
+    # CORREZIONE IMPORTANTE: l'esonero cuneo a CONSUNTIVO INPS vale 17,206 mld, non i
+    # 13,535 della relazione tecnica LdB 2024. La RT e' una PREVISIONE ed e' costruita
+    # su un perimetro diverso. Per il conto contributivo vale il consuntivo.
     #
-    # Il modello del ponte usa il vintage 2025+ (e' la serie strutturale).
-    # Punto di rottura del ponte: 212,2 mld. TUTTO l'intervallo 2025+ sta sopra.
-    contributi_ivs: float = 228.5     # vintage 2025+, centrale. Intervallo 223,5-233,5.
-    contributi_contributivi: float = 95.3   # quota dirottabile, scalata sulla base
+    # VINTAGE 2024 (consuntivo)  : 243,459 - [18,4 ... 24,5] = 218,9 - 225,1
+    # VINTAGE 2025+ (STRUTTURALE): l'esonero cuneo (17,206, IVS al 100%) e' MIGRATO AL
+    #   FISCO (L.207/2024 c.4-9: somma esente + detrazione IRPEF; la RT — Camera
+    #   A.C.2112-bis pp.13-17 — espone solo minori entrate TRIBUTARIE e maggiori spese
+    #   correnti, NESSUNA voce contributiva). Quei 17,2 mld tornano contributi versati.
+    #   => 243,459 - [1,2 ... 7,3] = 236,1 - 242,3
+    #
+    # Punto di rottura del ponte: 212,2 mld. Tutto il vintage 2025+ e' 24-30 mld sopra.
+    contributi_ivs: float = 237.3     # vintage 2025+, centrale. Intervallo 236,1-242,3.
+    contributi_contributivi: float = 99.0   # quota dirottabile, scalata sulla base
     aliquota_piena: float = 0.33
     aliquota_carveout: float = 0.25   # quanto dirottano; 8 punti restano in PAYG
     tfr_flusso_netto: float = 24.0    # 30 lordi - 6 Fondo Tesoreria perso
