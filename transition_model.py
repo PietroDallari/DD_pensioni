@@ -38,7 +38,14 @@ class Assumptions:
     # VERIFICATO: Eurostat gov_10a_exp (COFOG S13) 2024, GF1002 306,4 + GF1003 53,2.
     # Cross-check indipendente: la massa lorda ricostruita dalla distribuzione INPS
     # (perimetro persone, rivalutata a prezzi 2024) da' 355,4 -> scarto 1,2%.
-    spesa_ivs_lorda: float = 359.6
+    # PERIMETRO PREVIDENZIALE PURO. Il legacy da finanziare coi contributi NON e' la
+    # spesa pensionistica totale: e' quella al netto delle quote gia' a carico della
+    # fiscalita' via GIAS (INPS Rendiconto 2024: 320,6 - 65,9 = 254,7).
+    # La GIAS resta, ma come LINEA FISCALE SEPARATA che non si estingue col legacy:
+    # non e' un disavanzo previdenziale, e' assistenza dentro il perimetro pensioni.
+    spesa_ivs_lorda: float = 254.7      # a carico dei contributi
+    spesa_gias_pensionistica: float = 65.9   # fiscalita', linea separata
+    spesa_assistenza_fuori_pensioni: float = 29.3  # inv. civile + assegni sociali
     # VERIFICATO E RICONCILIATO (analisi/riconciliazione_perimetri.py).
     # MEF, Dichiarazioni 2024 (a.i. 2023), contribuenti con reddito PREVALENTE da
     # pensione: imposta netta 57,365 + addizionale regionale 5,438 + comunale 2,288.
@@ -50,7 +57,9 @@ class Assumptions:
     # calcolatore ne implicava ~7 mld contro i 22,8 registrati dal MEF.
     # NB: la ricalibrazione tocca l'aliquota MEDIA, non la MARGINALE (le detrazioni si
     # azzerano sopra i 50.000): il rapporto netto/lordo degli scenari (55%) non cambia.
-    clawback_irpef: float = 65.1
+    # 65,1 mld e' il clawback sull'INTERA spesa pensionistica (320,6). Sul perimetro
+    # previdenziale puro (254,7) la quota proporzionale e' 65,1 x 254,7/320,6 = 51,7.
+    clawback_irpef: float = 51.7
     anni_estinzione_legacy: int = 30  # spesa legacy lineare a zero
 
     # --- contributi ---
@@ -188,6 +197,36 @@ def comparto_riconoscimento(a: Assumptions, scenario: str) -> list[dict]:
                          payout_riconoscimento=payout, scoperto=scoperto,
                          passivita_residua=passivita))
     return rows
+
+
+# ----------------------------------------------------------------------
+# COMPARTO 2 — RISTRUTTURATO: NIENTE PRE-FINANZIAMENTO
+# ----------------------------------------------------------------------
+# Il fondo dedicato e' morto: la passivita' (2.450) matura ~42 mld/anno di solo
+# interesse nozionale, contro 17 (A) o 3-4 (B) di gettito. Copre il 7%. Nessuna
+# calibrazione del prelievo chiude un buco cosi'.
+# La ristrutturazione onesta: il riconoscimento NON si pre-finanzia. Si porta come
+# DEBITO NOZIONALE e si paga per cassa quando scade — che e' esattamente cio' che
+# il sistema NDC gia' fa oggi. Il valore del piano si sposta tutto sulla LEVA DELLO
+# SPREAD: portare la passivita' al tasso nozionale invece che convertirla in BTP.
+# Il prelievo smette di essere "la copertura" e diventa un contributo parziale al
+# servizio del debito. Va presentato cosi'.
+
+def comparto2_carry(a: Assumptions, scenario: str) -> dict:
+    """Costo di carry del riconoscimento, e quanto ne copre il prelievo."""
+    carry_nozionale = a.passivita_riconoscimento * a.tasso_nozionale_nom
+    carry_btp = a.passivita_riconoscimento * a.rendimento_btp50
+    risparmio_spread = carry_btp - carry_nozionale
+    g0 = gettito_prelievo(a, scenario, 0)
+    return dict(
+        passivita=a.passivita_riconoscimento,
+        carry_nozionale=carry_nozionale,
+        carry_se_convertito_in_btp=carry_btp,
+        risparmio_spread_annuo=risparmio_spread,
+        gettito_prelievo_iniziale=g0,
+        quota_carry_coperta_dal_prelievo=g0 / carry_nozionale * 100,
+        onere_netto_a_carico_fiscalita=carry_nozionale - g0,
+    )
 
 
 # ----------------------------------------------------------------------
