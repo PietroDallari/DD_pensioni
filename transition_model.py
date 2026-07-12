@@ -194,19 +194,35 @@ class Assumptions:
     #
     # Prelievo = min(eccesso, pensione - franchigia di 2.500 netti garantiti).
     # Sotto ~5.700-7.900 EUR/mese morde la FRANCHIGIA; sopra, morde l'ECCESSO.
-    # RICALCOLATO con le ALIQUOTE DI RENDIMENTO VERE (decrescenti: 2,00 -> 1,60 -> 1,35
-    # -> 1,10 -> 0,90% oltre la prima fascia). Il 2% piatto SOVRASTIMAVA l'eccesso proprio
-    # sulle pensioni alte, dove lo Scenario B preleva.
-    # Quota non finanziata per importo (premio 0): 38% a 2.000 EUR/mese, 11% a 5.000,
-    # ZERO a 8.000. I pensionati retributivi ricchi si sono in larga parte pagati la
-    # pensione: il rendimento decrescente li ha costretti a redditi e contributi altissimi.
-    # L'eccesso e' concentrato nelle pensioni MEDIE, non in quelle alte.
-    #   premio 0  : 6,3 lordo | 3,5 NETTO
-    #   premio +1 : 13,2      | 7,3
-    #   premio +2 : 19,3      | 10,6
-    # Il premio di carriera e' ora l'IPOTESI DOMINANTE (fa variare il gettito di 3x).
-    gettito_eccesso_min: float = 3.5   # NETTO (premio 0). Lordo 6,3
-    gettito_eccesso_max: float = 10.6  # NETTO (premio +2). Lordo 19,3
+    # CONFIGURAZIONE 3 (definitiva). Metodo: inversione dalla pensione effettiva con la
+    # formula retributiva VERA (quota A: 2,00/1,50/1,25/1,00 — quota B: 2,00/1,60/1,35/1,10/
+    # 0,90, D.Lgs. 503/1992 art.12), sentiero salariale AMECO, PREMIO DI CARRIERA CORRELATO
+    # AL CENSO, aliquote contributive STORICHE (19-27% pre-1996, INPS Circ.114/2009), tassi
+    # di capitalizzazione ufficiali, tetto di prima fascia storico (2010 = 42.364), art.3-ter
+    # D.L. 384/1992 (+1 punto sopra la prima fascia dal 1993).
+    #
+    # QUOTA NON FINANZIATA: positiva OVUNQUE, grande, decrescente nell'importo ma mai nulla.
+    #   2.000 EUR/mese -> 40,9% | 5.000 -> 37,1% | 8.000 -> 30,5% | 10.000 -> 28,1%
+    #   media sopra 5.000 -> 25,8%
+    #
+    # Il "ribaltamento" (i retributivi ricchi si sarebbero pagati la pensione) e' stato
+    # RESPINTO: era un artefatto di un modello che trattava premio di carriera e censo come
+    # INDIPENDENTI, cioe' assumeva che chi finisce con 225.000 EUR di retribuzione li
+    # guadagnasse PIATTI dai 25 anni.
+    #
+    # ANCORA ESTERNA — il risultato converge con la letteratura:
+    #   Castellino & Fornero: contribuzione effettiva 27% (1992) vs aliquota di equilibrio
+    #     45-55% => circa META' della pensione media non finanziata. Il nostro 38-43% e' in linea.
+    #   Ferraresi & Fornero (CeRP WP 2/00): NPVR 110-152%, IRR reale 2,2-3,5%, sempre POSITIVO.
+    #   Gronchi (1995): il retributivo premia le carriere RIPIDE — il meccanismo del premio.
+    #
+    # BORDO BASSO CONSAPEVOLE: fondi speciali, ex-INPDAI (massimale contributivo proprio) e
+    # quota A sull'ultima retribuzione alzano tutti il gettito. Cfr. analisi/FASE2_estensioni.md
+    #
+    # Prelievo = min(eccesso, pensione - franchigia di 2.500 netti garantiti).
+    # Sensibilita' sulla pendenza del premio (+/-30%): 9,2 - 11,5 mld netti. Centrale 10,6.
+    gettito_eccesso_min: float = 9.2   # NETTO (pendenza 0,7). Lordo 16,7
+    gettito_eccesso_max: float = 11.5  # NETTO (pendenza 1,3). Lordo 20,9
     anni_picco_eccesso: int = 25      # base piatta, poi declino lineare a zero
     anni_fine_eccesso: int = 50
 

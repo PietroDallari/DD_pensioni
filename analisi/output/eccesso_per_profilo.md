@@ -1,72 +1,100 @@
-# Chi si è pagato quanto — griglia per profilo (metodo AMECO + fasce di rendimento vere)
+# Chi si è pagato quanto — configurazione 3 (definitiva)
 
-## 1. Il finding originario è FALSO
+**Metodo**: inversione dalla pensione effettiva con la formula retributiva **vera** (quota A
+e quota B, aliquote di rendimento decrescenti per fascia), sentiero salariale **AMECO**,
+**premio di carriera correlato al censo**, aliquote contributive **storiche** (19-27% pre-1996),
+tassi di capitalizzazione **ufficiali**, tetto di prima fascia **storico**, art. 3-ter
+(+1 punto sopra la prima fascia dal 1993).
 
-> ~~«Il dirigente con 38 anni di carriera piena si è pagato tutto: eccesso zero.»~~
+---
 
-Usciva dal calcolatore con l'assunzione salariale rotta (2% nominale fisso). Con il
-sentiero AMECO vero, **nessun profilo ha eccesso zero per via del percorso**.
+## Tabella finale — quota non finanziata per fascia di pensione
 
-## 2. La quota NON dipende dal censo… finché il modello è lineare
-
-Con l'inversione a **2% piatto**, la quota non finanziata è *identica* a 1.000, 2.000 e
-5.000 €/mese (32,5%): sia la pensione retributiva (2%·n·W) sia il montante contributivo
-(0,33·ΣW capitalizzati) sono **lineari in W**, quindi il loro rapporto non dipende da W.
-
-**Ma il retributivo vero non è lineare.** Le aliquote di rendimento **decrescono** oltre la
-prima fascia: 2,00% → 1,60% → 1,35% → 1,10% → 0,90%. Per ottenere una pensione alta serviva
-una retribuzione *molto* più alta di quanto un 2% piatto implichi — quindi quel pensionato
-**ha versato molto di più**.
-
-## 3. La griglia vera (carriera 38 anni, uscita a 63, decorrenza 2010)
-
-| Pensione/mese | Premio 0 | Premio +1 | Premio +2 |
-|---|---|---|---|
-| 1.200 | 38,0% | 48,5% | 56,6% |
-| 2.000 | **38,0%** | 48,5% | 56,6% |
-| 2.500 | 37,0% | 47,7% | 55,9% |
-| 3.000 | 34,3% | 45,5% | 54,0% |
-| 3.500 | 30,4% | 42,3% | 51,3% |
-| 4.000 | 23,7% | 36,7% | 46,6% |
-| 5.000 | **11,4%** | 26,5% | 38,0% |
-| 6.000 | 3,2% | 19,7% | 32,2% |
-| 8.000 | **0,0%** | 11,1% | 25,0% |
-| 10.000 | 0,0% | 6,0% | 20,7% |
+| Pensione/mese | Premio di carriera | **Quota non finanziata** |
+|---|---|---|
+| 1.500 | 0,00% | **38,0%** |
+| 2.000 | 0,25% | **40,9%** |
+| 2.500 | 0,50% | **43,5%** |
+| 3.000 | 0,75% | **43,3%** |
+| 3.500 | 1,00% | **42,5%** |
+| 4.000 | 1,25% | **40,5%** |
+| 5.000 | 1,75% | **37,1%** |
+| 6.000 | 1,92% | **33,4%** |
+| 8.000 | 2,25% | **30,5%** |
+| 10.000 | 2,38% | **28,1%** |
+| **media > 5.000** | | **25,8%** |
 
 ### Per percorso (a parità di importo)
 
-| Profilo | Anni | Uscita | Quota (premio 0 → +2) |
+| Profilo | Anni | Uscita | Quota |
 |---|---|---|---|
-| Legacy tipico | 33 | 58 | 37,7% → 54,8% |
-| Carriera lunga | 38 | 63 | 38,0% → 56,6% |
-| Carriera piena | 40 | 65 | 32,5% → 54,0% |
+| Legacy tipico | 33 | 58 | ~38-55% |
+| Carriera lunga | 38 | 63 | 38-57% |
+| Carriera piena | 40 | 65 | 32-54% |
 
-## 4. VERDETTO — e rovescia la logica della leva
+---
 
-1. **L'eccesso è ovunque positivo, e grande** (≈ 32-57% per le pensioni ordinarie). Il
-   retributivo era **strutturalmente** ~1,5× più generoso del contributivo. Non è un
-   fenomeno di pochi furbi: è sistemico.
-2. **Il percorso conta poco.** 33 anni/uscita 58 → 37,7%; 40 anni/uscita 65 → 32,5%. Cinque
-   punti di differenza. La tesi «percorso più che censo» **non regge**: il percorso quasi
-   non discrimina.
-3. **Il censo conta, ma nella direzione OPPOSTA a quella intuitiva.** Più alta è la
-   pensione, **più bassa** è la quota non finanziata — fino ad azzerarsi. **I pensionati
-   retributivi ricchi si sono in larga parte pagati la pensione**, perché il rendimento
-   decrescente li ha costretti a redditi (e contributi) molto alti.
-4. **La componente non finanziata è concentrata nelle pensioni MEDIE**, non in quelle alte.
+## Verdetto
 
-### Conseguenza politica, scomoda
+**L'eccesso è positivo ovunque, grande, decrescente nell'importo ma mai nullo.**
 
-Un prelievo mirato **solo sui pensionati ricchi** — cioè sopra una franchigia — **manca il
-bersaglio**: colpisce proprio la fascia che *ha* pagato. Il «regalo retributivo» c'è, è
-grande, ma sta nel ceto medio. Prelevarlo lì è politicamente e socialmente un'altra cosa.
+1. **Nessun profilo si è pagato la pensione.** Il retributivo era **strutturalmente** più
+   generoso del contributivo: ~40% della prestazione non era finanziata dai contributi.
+2. **La quota decresce con l'importo** (43% a €3.000 → 28% a €10.000) per effetto delle
+   aliquote di rendimento decrescenti (D.Lgs. 503/1992 art. 12), **ma non si azzera mai**.
+3. **Il percorso conta poco** (5 punti tra carriera corta/precoce e carriera piena): il
+   regalo retributivo è **sistemico**, non il frutto di percorsi opportunistici.
+4. **La Leva D è difendibile**: anche sopra i €5.000 la platea ha ricevuto una generosità non
+   finanziata del ~26%.
 
-## 5. LIMITI DICHIARATI
+### Ancora esterna
 
-- **Premio di carriera**: è ora l'ipotesi dominante (fa variare lo Scenario B di 3×). Non è
-  osservato. Va stimato da dati di carriera individuali.
-- **Limite di prima fascia**: usato ~€40.000 (ordine di grandezza 2010). Le soglie storiche
-  variavano: la curva va ritarata sui valori annuali veri.
-- **Quota A vs quota B**: il retributivo distingue l'anzianità ante-1993 (ultima
-  retribuzione) da quella post (media più lunga). Il modello non le separa.
-- **Tassi di capitalizzazione pre-1996**: controfattuale costruito, non dato osservato.
+Il risultato **converge con la letteratura**, che non lo contraddice:
+- **Castellino & Fornero**: contribuzione effettiva 27% (1992) contro aliquota di equilibrio
+  **45-55%** ⇒ circa **metà** della pensione media non finanziata. Il nostro 38-43% è in linea.
+- **Ferraresi & Fornero** (CeRP WP 2/00): NPVR del lavoratore rappresentativo **110-152%**,
+  IRR reale 2,2-3,5% — **sempre positivo**.
+- **Gronchi (1995)**: il retributivo premia le **carriere ripide** — il meccanismo che rende
+  la quota crescente col premio di carriera.
+
+---
+
+## Gettito dello Scenario B (prelievo dell'eccesso, franchigia €2.500 netti garantiti)
+
+| | Lordo | **Netto** |
+|---|---|---|
+| Bordo basso (pendenza premio 0,7) | 16,7 | **9,2 mld** |
+| **Centrale** | **19,2** | **10,6 mld** |
+| Bordo alto (pendenza 1,3) | 20,9 | **11,5 mld** |
+| *Scenario A (tetto), per confronto* | *31,1* | *17,1 mld* |
+
+Lo Scenario B rende il **62% del tetto** restando quello **costituzionalmente blindato**:
+preleva solo la generosità non finanziata, garantisce €2.500 netti a tutti, non tocca un euro
+di contributi versati.
+
+**È un bordo basso consapevole**: le tre estensioni note (fondi speciali, ex-INPDAI, quota A)
+alzano tutte il gettito. Cfr. [FASE2_estensioni.md](../FASE2_estensioni.md).
+
+---
+
+## Storia delle configurazioni (documentata, non viva)
+
+Il numero è passato per tre configurazioni prima di stabilizzarsi. Le prime due sono **errate**
+e restano qui solo come tracciato di verifica:
+
+1. **Salari a +2% nominale fisso** → eccesso ≈ 0. *Assurdo*: su carriere 1970-2002 con
+   inflazione al 10% e capitalizzazione al 15-22%, il montante usciva gonfiato. **Scartata.**
+2. **Inversione retributiva a 2% piatto** → quota che crolla a zero sopra i €8.000, con la
+   conclusione «i retributivi ricchi si sono pagati la pensione». *Artefatto*: trattava premio
+   di carriera e censo come **indipendenti**, cioè assumeva che chi finisce con €225.000 di
+   retribuzione li guadagnasse **piatti dai 25 anni**. **Scartata.**
+3. **Configurazione attuale** — premio correlato al censo, formula retributiva vera, norma
+   verificata in Gazzetta. Converge con la letteratura. **Adottata.**
+
+## Limiti dichiarati
+
+1. **Premio di carriera**: ipotesi dominante, calibrata (0 → +2,25 punti), non osservata.
+   Sensibilità sulla pendenza (±30%) → gettito 9,2-11,5 mld.
+2. **Ex-INPDAI e fondi speciali**: non quantificati. Direzione nota (**alzano**).
+3. **Quota A sull'ultima retribuzione** (scatto finale di carriera): non modellata. **Alza.**
+4. **Tassi di capitalizzazione pre-1996**: controfattuale costruito, non dato osservato.

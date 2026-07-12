@@ -17,3 +17,22 @@ gettito_scenarioA_netto,17.1,mld EUR,2024,"al netto del clawback perso (aliquota
 gettito_scenarioB_lordo_min,5.5,mld EUR,2024,coorti di decorrenza INPS 1580 (copertura parziale: dipendenti pubblici),stima_bordo_basso
 gettito_scenarioB_lordo_max,7.3,mld EUR,2024,coorti di decorrenza INPS 1580 (copertura parziale: dipendenti pubblici),stima_bordo_basso
 aliquota_marginale_recupero,44.1,%,2024,derivata numericamente dalla funzione fiscale sulle fasce colpite,derivato
+quota_non_finanziata_2000_mese,40.9,%,2010,Config.3: formula retributiva vera + AMECO + premio correlato + aliquote storiche,stima_ancorata
+quota_non_finanziata_5000_mese,37.1,%,2010,Config.3,stima_ancorata
+quota_non_finanziata_8000_mese,30.5,%,2010,Config.3,stima_ancorata
+quota_non_finanziata_media_sopra_5000,25.8,%,2010,Config.3,stima_ancorata
+gettito_scenarioB_netto_min,9.2,mld EUR,2024,"Config.3, pendenza premio 0,7",stima_ancorata
+gettito_scenarioB_netto_centrale,10.6,mld EUR,2024,"Config.3, pendenza premio 1,0",stima_ancorata
+gettito_scenarioB_netto_max,11.5,mld EUR,2024,"Config.3, pendenza premio 1,3",stima_ancorata
+premio_carriera_correlato,"0 -> +2,25",punti/anno,,"IPOTESI DICHIARATA, non osservata. Calibrata: 0 sotto 1.500; +0,5 a 2.500; +1 a 3.500; +1,75 a 5.000; +2,25 a 8.000+",ipotesi_dichiarata
+tassi_capitalizzazione_pre_1996,controfattuale,—,,"IPOTESI DICHIARATA: il contributivo nasce nel 1996; i tassi pre-1996 sono costruiti dai livelli di PIL nominale, non osservati",ipotesi_dichiarata
+serie_salariale,AMECO ITA.1.0.0.0.HWCDW,indice,1960-2025,"Commissione UE, Nominal compensation per employee, total economy. Crescita: 14,6%/anno 1970-90; 3,1% 1990-2010; 1,3% 2010-24",verificato
+aliquote_rendimento_quota_A,"2,00/1,50/1,25/1,00",%,,L. 67/1988 art.21 c.6 (versione originaria) — anzianita fino al 31/12/1992,verificato_norma
+aliquote_rendimento_quota_B,"2,00/1,60/1,35/1,10/0,90",%,,"D.Lgs. 503/1992 art.12 c.1 — anzianita dal 1/1/1993. Ultima fascia APERTA, nessun cap",verificato_norma
+contributi_sopra_tetto_pensionabile,PIENI +1 punto,—,1993+,"art. 3-ter D.L. 384/1992 (conv. L.438/1992): aliquota aggiuntiva di 1 punto sulle quote eccedenti la prima fascia, a carico del lavoratore",verificato_norma
+massimale_contributivo_vecchi_iscritti,ASSENTE,—,,"INPS Circ. 177/1996: per chi ha anzianita ante-1996 si sottopone a contribuzione l intera retribuzione, senza massimale. Il massimale L.335/95 art.2 c.18 vale solo per i NUOVI iscritti dal 1996",verificato_norma
+aliquote_ivs_fpld_storiche,"19,21% (1972) -> 27,17% (1993) -> 33% (2007)",%,1920-2026,"INPS Circ. 114/2009. Il modello usa queste, NON il 33% retroattivo: media pre-1996 = 24,35%",verificato_norma
+tetto_prima_fascia_2010,42364.0,EUR,2010,INPS Circ. 16 del 2/2/2010. Serie: 1993=27.617 -> 2024=55.008,verificato_norma
+ancora_letteratura_Castellino_Fornero,27% vs 45-55%,%,1992,"Castellino & Fornero, A Pension System in Transition (CeRP): contribuzione effettiva vs aliquota di equilibrio => circa META della pensione media non finanziata",riferimento
+ancora_letteratura_Ferraresi_Fornero,NPVR 110-152%,%,,"Ferraresi & Fornero, CeRP WP 2/00: rapporto prestazioni/contributi del lavoratore rappresentativo. IRR reale 2,2-3,5%, sempre POSITIVO",riferimento
+ancora_letteratura_Gronchi,carriere ripide,—,1995,"Gronchi, I rendimenti impliciti della previdenza obbligatoria: il retributivo premia le carriere esponenziali e brevi. E il meccanismo del premio correlato",riferimento
