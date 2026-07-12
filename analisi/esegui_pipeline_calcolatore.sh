@@ -5,6 +5,13 @@
 #   bash analisi/esegui_pipeline_calcolatore.sh
 set -euo pipefail
 
+# COMMIT UPSTREAM PINNATO. Tutti i numeri del report sono calcolati contro questo commit
+# del calcolatore di Nazareno. Senza pinning i risultati NON sono riproducibili: l'upstream
+# si muove (al 12/07/2026 aveva 5 commit successivi, fra cui "Refine pension calculator
+# contribution modelling" e "Fix simplified contribution-year scaling", che cambiano i numeri).
+# Per aggiornare: cambiare l'hash e RIVERIFICARE tutti i numeri, non solo rigirare.
+PIN_UPSTREAM="1007648"
+
 ANALISI_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$ANALISI_DIR/../pensioni_italia" && pwd)"
 VENV="$ANALISI_DIR/.venv"
@@ -27,6 +34,17 @@ fi
   xlrd pip-system-certs pytest
 
 cd "$REPO_DIR"
+
+# --- 1-bis. Pin del commit upstream --------------------------------------------
+if git rev-parse --verify "$PIN_UPSTREAM" >/dev/null 2>&1; then
+  attuale="$(git rev-parse --short HEAD)"
+  if [ "$attuale" != "$PIN_UPSTREAM" ]; then
+    echo ">> pinning upstream: $attuale -> $PIN_UPSTREAM"
+    git checkout -q "$PIN_UPSTREAM"
+  fi
+else
+  echo "ATTENZIONE: commit $PIN_UPSTREAM non trovato. I numeri potrebbero divergere."
+fi
 
 # --- 2. Tassi di capitalizzazione dal PIL nominale ISTAT (SDMX) ---------------
 # -> output/data/clean/tassi_capitalizzazione_montante.csv
