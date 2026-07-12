@@ -194,8 +194,19 @@ class Assumptions:
     #
     # Prelievo = min(eccesso, pensione - franchigia di 2.500 netti garantiti).
     # Sotto ~5.700-7.900 EUR/mese morde la FRANCHIGIA; sopra, morde l'ECCESSO.
-    gettito_eccesso_min: float = 13.2  # NETTO (premio 0). Lordo 24,0
-    gettito_eccesso_max: float = 15.5  # NETTO (premio +2). Lordo 28,2
+    # RICALCOLATO con le ALIQUOTE DI RENDIMENTO VERE (decrescenti: 2,00 -> 1,60 -> 1,35
+    # -> 1,10 -> 0,90% oltre la prima fascia). Il 2% piatto SOVRASTIMAVA l'eccesso proprio
+    # sulle pensioni alte, dove lo Scenario B preleva.
+    # Quota non finanziata per importo (premio 0): 38% a 2.000 EUR/mese, 11% a 5.000,
+    # ZERO a 8.000. I pensionati retributivi ricchi si sono in larga parte pagati la
+    # pensione: il rendimento decrescente li ha costretti a redditi e contributi altissimi.
+    # L'eccesso e' concentrato nelle pensioni MEDIE, non in quelle alte.
+    #   premio 0  : 6,3 lordo | 3,5 NETTO
+    #   premio +1 : 13,2      | 7,3
+    #   premio +2 : 19,3      | 10,6
+    # Il premio di carriera e' ora l'IPOTESI DOMINANTE (fa variare il gettito di 3x).
+    gettito_eccesso_min: float = 3.5   # NETTO (premio 0). Lordo 6,3
+    gettito_eccesso_max: float = 10.6  # NETTO (premio +2). Lordo 19,3
     anni_picco_eccesso: int = 25      # base piatta, poi declino lineare a zero
     anni_fine_eccesso: int = 50
 
