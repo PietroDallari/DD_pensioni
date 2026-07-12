@@ -1,0 +1,18 @@
+# Il repo di Nazareno Lecis resta un clone locale, NON viene ridistribuito qui.
+# Clonalo separatamente:  git clone https://github.com/NazarenoLecis/pensioni_italia.git
+pensioni_italia/
+
+# Ambiente virtuale (ricreato da analisi/esegui_pipeline_calcolatore.sh)
+.venv/
+analisi/.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,107 @@
+periodo_dal,periodo_al,eta,coefficiente,fonte_id,norma,note
+1996,2009,57,0.0472,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,58,0.048600000000000004,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,59,0.05006,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,60,0.05163,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,61,0.05334,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,62,0.05514,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,63,0.05706000000000001,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,64,0.059109999999999996,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+1996,2009,65,0.06136,inps_coefficiente_trasformazione_storico,"Legge 8 agosto 1995, n. 335","Coefficienti originari della riforma Dini, validi dal 1996 al 2009; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,57,0.04418999999999999,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,58,0.045380000000000004,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,59,0.046639999999999994,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,60,0.04798,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,61,0.049400000000000006,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,62,0.05093,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,63,0.05257,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,64,0.05432000000000001,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2010,2012,65,0.0562,ministero_lavoro_coefficiente_trasformazione_storico,"Legge 24 dicembre 2007, n. 247","Prima revisione dei coefficienti, valida dal 2010 al 2012; dai 65 anni si applicava il valore massimo della tabella."
+2013,2015,57,0.04304,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,58,0.044160000000000005,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,59,0.04535,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,60,0.04661,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,61,0.04796,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,62,0.049400000000000006,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,63,0.050940000000000006,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,64,0.052590000000000005,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,65,0.054349999999999996,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,66,0.05624,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,67,0.05826,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,68,0.06046,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,69,0.06283,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2013,2015,70,0.06541000000000001,ministero_lavoro_coefficiente_trasformazione_storico,Decreto direttoriale 15 maggio 2012,Coefficienti validi dal 2013 al 2015.
+2016,2018,57,0.042460000000000005,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,58,0.04354,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,59,0.04468,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,60,0.04589000000000001,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,61,0.04719,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,62,0.04856,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,63,0.050019999999999995,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,64,0.05159,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,65,0.053259999999999995,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,66,0.055060000000000005,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,67,0.057,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,68,0.0591,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,69,0.061349999999999995,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2016,2018,70,0.06378,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 22 giugno 2015,Coefficienti validi dal 2016 al 2018.
+2019,2020,57,0.042,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,58,0.04304,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,59,0.04414,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,60,0.04532,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,61,0.04657,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,62,0.0479,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,63,0.04932,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,64,0.05083,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,65,0.052450000000000004,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,66,0.054189999999999995,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,67,0.05604,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,68,0.05804,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,69,0.06021,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,70,0.06257,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2019,2020,71,0.06513,ministero_lavoro_coefficiente_trasformazione_storico,Decreto interministeriale 15 maggio 2018,Coefficienti validi dal 2019 al 2020.
+2021,2022,57,0.04186,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,58,0.04289,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,59,0.04399,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,60,0.045149999999999996,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,61,0.04639,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,62,0.04769999999999999,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,63,0.049100000000000005,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,64,0.0506,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,65,0.052199999999999996,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,66,0.05391,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,67,0.05575,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,68,0.05772,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,69,0.05985,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,70,0.06215,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2021,2022,71,0.06466,inps_coefficiente_trasformazione,DM 1 giugno 2020,Tabella pubblicata da INPS per i coefficienti in vigore dal 1 gennaio 2021.
+2023,2024,57,0.042699999999999995,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,58,0.04378,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,59,0.044930000000000005,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,60,0.046150000000000004,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,61,0.047439999999999996,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,62,0.048819999999999995,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,63,0.05028,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,64,0.051840000000000004,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,65,0.053520000000000005,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,66,0.05531,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,67,0.057229999999999996,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,68,0.05931,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,69,0.06154,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,70,0.06394999999999999,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2023,2024,71,0.06655,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 1 dicembre 2022,Valori ministeriali 2023-2024 riportati nella tabella storica del calcolatore.
+2025,2026,57,0.042039999999999994,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,58,0.04308,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,59,0.04418999999999999,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,60,0.04536,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,61,0.04661,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,62,0.04795,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,63,0.04936,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,64,0.05088,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,65,0.0525,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,66,0.05423,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,67,0.05608,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,68,0.05808,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,69,0.06024,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,70,0.06258,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
+2025,2026,71,0.06509999999999999,ministero_lavoro_coefficiente_trasformazione,Decreto direttoriale 20 novembre 2024,Valori ministeriali 2025-2026; per eta' intermedie si usa interpolazione mensile lineare.
