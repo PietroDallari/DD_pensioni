@@ -49,7 +49,7 @@ $PY transition_model.py --csv analisi/output
 | `analisi/output/parametri_verificati.csv` | **37 parametri**, ciascuno con valore, unità, anno, fonte, flag di qualità. Zero placeholder. È il file di riferimento. |
 | `analisi/output/perimetro_spesa.csv` | Riconciliazione COFOG: vecchiaia + superstiti = €359,6 mld (2024) |
 | `analisi/output/distribuzione_pensionati.csv` | Distribuzione per fascia lorda/netta, con IRPEF per fascia |
-| `analisi/output/passivita_riconoscimento.csv` | Passività a due vie: €2.599 (top-down) vs €2.297 (bottom-up) → adottato €2.450 mld |
+| `analisi/output/passivita_riconoscimento.csv` | Passività a **doppia via**: €2.599 (top-down, ADL Eurostat) vs €2.297 (bottom-up, coorti × montante). Divergenza 11,6%. Centrale adottato: **€2.450** = media aritmetica arrotondata. Da qui scalano linearmente l'interesse nozionale (41,7 mld/anno) e il carry dello spread (63,7) |
 | `analisi/output/scenari_lordo_netto.csv` | Scenari A e B, lordo e netto del clawback IRPEF perso |
 | `analisi/output/scenarioB_ricalibrato.csv` | Scenario B con sentiero salariale AMECO |
 | `analisi/output/coda_spezzata.csv` | Pareto ancorata su due punti INPS + coda spezzata sopra €10.000 |
@@ -95,7 +95,9 @@ Da clone pulito, con il pin attivo, la pipeline riproduce:
 | Spesa pensioni COFOG 2024 | €359,6 mld |
 | Clawback IRPEF (MEF) | €65,1 mld |
 | Spesa a carico dei contributi | €254,7 mld |
-| Passività di riconoscimento (Via A) | €2.599 mld |
+| Passività di riconoscimento — **Via A** (top-down, ADL Eurostat) | €2.599 mld |
+| Passività di riconoscimento — **Via B** (bottom-up, coorti) | €2.297 mld |
+| Passività — **centrale adottato** (media delle due, arrotondata) | **€2.450 mld** |
 | Picco BTP del ponte | €94 mld (4% del PIL), 2027 |
 | Profilo mediano: PAYG vs proposta | €22.650 → €27.239 (**+20%**) |
 | Test del calcolatore | **17/17 passati** |
