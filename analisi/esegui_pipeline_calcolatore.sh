@@ -56,10 +56,25 @@ fi
 # le retribuzioni contrattuali ISTAT. Senza cache, l'import FALLISCE se ISTAT e' giu' —
 # anche per gli script che quei dati non li usano.
 # Popolarle qui rende la replica indipendente dall'uptime ISTAT al momento dell'import.
-if [ ! -f output/data/clean/retribuzioni_contrattuali_ccnl.csv ]; then
-  echo ">> popolo la cache delle retribuzioni contrattuali ISTAT (155_318)"
-  "$PY" calcolatore/src/download_contract_wages.py
-fi
+# ISTAT e' notoriamente instabile: senza retry il primo run puo' fallire e lasciare la
+# cache vuota, e a quel punto NIENTE funziona (l'import del modulo la richiede).
+scarica_con_retry() {
+  local script="$1" atteso="$2" nome="$3"
+  [ -f "$atteso" ] && return 0
+  for tentativo in 1 2 3 4 5; do
+    echo ">> $nome — tentativo $tentativo/5"
+    if "$PY" "$script" 2>/dev/null && [ -f "$atteso" ]; then
+      echo ">> $nome — OK"
+      return 0
+    fi
+    sleep $((tentativo * 20))
+  done
+  echo "ERRORE: $nome non scaricabile dopo 5 tentativi. ISTAT irraggiungibile."
+  echo "        Riprovare piu' tardi: senza questa cache l'import del calcolatore fallisce."
+  return 1
+}
+
+scarica_con_retry calcolatore/src/download_contract_wages.py   output/data/clean/retribuzioni_contrattuali_ccnl.csv   "cache retribuzioni contrattuali ISTAT (155_318)"
 
 # --- 2. Tassi di capitalizzazione dal PIL nominale ISTAT (SDMX) ---------------
 # -> output/data/clean/tassi_capitalizzazione_montante.csv
