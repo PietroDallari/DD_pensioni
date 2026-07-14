@@ -58,6 +58,32 @@ import pandas as pd  # noqa: E402
 import pension_paid_calculator as ppc  # noqa: E402
 
 
+# --- SECONDO OVERRIDE: il sentiero salariale resta AMECO ----------------------
+# Dal commit upstream 52abdf7 il calcolatore usa gli INDICI ISTAT DELLE RETRIBUZIONI
+# CONTRATTUALI (dataflow 155_318) per dare forma al sentiero salariale fra i punti noti,
+# al posto dell'interpolazione geometrica: salary_profile() chiama prima
+# contractual_salary_profile() e, se questa risponde, usa la sua forma.
+#
+# NOI COSTRUIAMO IL SENTIERO CON AMECO (retribuzioni nominali per occupato, 1960-2025) e lo
+# passiamo al calcolatore come ral_iniziale + ral_finale. Lasciare attivo il profilo
+# contrattuale significherebbe "estremi AMECO + interno CCNL": un metodo diverso da quello
+# che il report dichiara.
+#
+# PERCHE' AMECO E NON I CONTRATTUALI: gli indici ISTAT misurano le retribuzioni CONTRATTUALI
+# (i minimi negoziali), AMECO le retribuzioni EFFETTIVAMENTE percepite per occupato. Il
+# controfattuale contributivo si costruisce sui contributi VERSATI, che seguono la
+# retribuzione effettiva (imponibile), non il minimo tabellare. La differenza non e' neutra:
+# lo slittamento salariale (superminimi, scatti, premi) sta nella prima e non nella seconda.
+#
+# EFFETTO MISURATO della scelta: con gli indici contrattuali l'eccesso non finanziato
+# salirebbe di 2-3 punti per fascia (bordo alto 43,3% -> 44,3%) e il gettito dello Scenario B
+# di +0,1 mld. La nostra scelta e' quindi la PIU' CONSERVATIVA delle due.
+#
+# Il bypass e' idempotente e non tocca il repo di Nazareno.
+if hasattr(ppc, "contractual_salary_profile"):
+    ppc.contractual_salary_profile = lambda years, scenario, known_points: None
+
+
 # --- L'override ---------------------------------------------------------------
 _original_capitalization_for_year = ppc.capitalization_for_year
 

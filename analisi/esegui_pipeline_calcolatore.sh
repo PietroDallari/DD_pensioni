@@ -6,11 +6,15 @@
 set -euo pipefail
 
 # COMMIT UPSTREAM PINNATO. Tutti i numeri del report sono calcolati contro questo commit
-# del calcolatore di Nazareno. Senza pinning i risultati NON sono riproducibili: l'upstream
-# si muove (al 12/07/2026 aveva 5 commit successivi, fra cui "Refine pension calculator
-# contribution modelling" e "Fix simplified contribution-year scaling", che cambiano i numeri).
-# Per aggiornare: cambiare l'hash e RIVERIFICARE tutti i numeri, non solo rigirare.
-PIN_UPSTREAM="1007648"
+# del calcolatore di Nazareno. Il pin serve perche' l'upstream si muove e i suoi cambiamenti
+# possono spostare i risultati: aggiornarlo richiede di RIVERIFICARE, non solo rigirare.
+#
+# 0d7a5b7 (adottato dopo verifica): incorpora i bug fix upstream, che per il nostro uso sono a
+# DELTA ZERO (misurato: si attivano solo con anni_contribuiti < anni_disponibili o mesi < 12,
+# e noi usiamo sempre gli estremi). Il cambiamento al sentiero salariale (indici contrattuali
+# ISTAT) e' invece BYPASSATO in analisi/override_tassi_ufficiali.py, perche' noi costruiamo il
+# sentiero con AMECO — scelta dichiarata, cfr. quel modulo e parametri_verificati.csv.
+PIN_UPSTREAM="0d7a5b7"
 
 ANALISI_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$ANALISI_DIR/../pensioni_italia" && pwd)"
@@ -44,6 +48,17 @@ if git rev-parse --verify "$PIN_UPSTREAM" >/dev/null 2>&1; then
   fi
 else
   echo "ATTENZIONE: commit $PIN_UPSTREAM non trovato. I numeri potrebbero divergere."
+fi
+
+# --- 1-ter. PREREQUISITO: popolare le cache di rete ---------------------------
+# Il calcolatore fa chiamate di rete AL LIVELLO DEL MODULO: importare
+# pension_paid_calculator scarica (se manca la cache) i tassi di capitalizzazione ISTAT e
+# le retribuzioni contrattuali ISTAT. Senza cache, l'import FALLISCE se ISTAT e' giu' —
+# anche per gli script che quei dati non li usano.
+# Popolarle qui rende la replica indipendente dall'uptime ISTAT al momento dell'import.
+if [ ! -f output/data/clean/retribuzioni_contrattuali_ccnl.csv ]; then
+  echo ">> popolo la cache delle retribuzioni contrattuali ISTAT (155_318)"
+  "$PY" calcolatore/src/download_contract_wages.py
 fi
 
 # --- 2. Tassi di capitalizzazione dal PIL nominale ISTAT (SDMX) ---------------
