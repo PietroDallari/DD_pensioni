@@ -82,9 +82,19 @@ montante dello scenario `carriera_lunga_mista`: 630.060 → 660.875).
 
 Senza pin, chiunque cloni ottiene risultati diversi da quelli del report.
 
-**Per aggiornare il pin**: cambiare l'hash e **riverificare** i numeri, non solo rigirarli.
-L'upstream ha correzioni al modello contributivo che **non abbiamo incorporato** — è una voce
-del backlog in `analisi/FASE2_estensioni.md`.
+**L'upgrade è stato verificato e NON adottato.** Non è un rinvio: è una decisione documentata
+in `analisi/output/upgrade_upstream_quarantena.md`.
+
+I due bug fix upstream (`bcfda17`, `a36819a`) **non ci toccano** — si attivano solo con
+`anni_contribuiti < anni_disponibili` o `mesi < 12`, e noi usiamo sempre gli estremi.
+Ma `52abdf7` cambia `salary_profile`: usa ora gli **indici ISTAT delle retribuzioni
+contrattuali** al posto dell'interpolazione geometrica. Il nostro Scenario B costruisce il
+sentiero con **AMECO**: adottare il pin renderebbe il metodo dichiarato nel report diverso da
+quello eseguito dal codice. È una **scelta di metodo**, non un aggiornamento di numeri.
+
+Effetto misurato: eccesso +1-2 punti per fascia (bordo alto 43,3% → 44,3%, fuori
+dall'intervallo dichiarato 28-43); gettito +0,1 mld (10,6 → 10,7). Nessuna conclusione
+si inverte.
 
 ## Regressione — verificata
 
