@@ -6,11 +6,15 @@
 set -euo pipefail
 
 # COMMIT UPSTREAM PINNATO. Tutti i numeri del report sono calcolati contro questo commit
-# del calcolatore di Nazareno. Senza pinning i risultati NON sono riproducibili: l'upstream
-# si muove (al 12/07/2026 aveva 5 commit successivi, fra cui "Refine pension calculator
-# contribution modelling" e "Fix simplified contribution-year scaling", che cambiano i numeri).
-# Per aggiornare: cambiare l'hash e RIVERIFICARE tutti i numeri, non solo rigirare.
-PIN_UPSTREAM="1007648"
+# del calcolatore di Nazareno. Il pin serve perche' l'upstream si muove e i suoi cambiamenti
+# possono spostare i risultati: aggiornarlo richiede di RIVERIFICARE, non solo rigirare.
+#
+# 0d7a5b7 (adottato dopo verifica): incorpora i bug fix upstream, che per il nostro uso sono a
+# DELTA ZERO (misurato: si attivano solo con anni_contribuiti < anni_disponibili o mesi < 12,
+# e noi usiamo sempre gli estremi). Il cambiamento al sentiero salariale (indici contrattuali
+# ISTAT) e' invece BYPASSATO in analisi/override_tassi_ufficiali.py, perche' noi costruiamo il
+# sentiero con AMECO — scelta dichiarata, cfr. quel modulo e parametri_verificati.csv.
+PIN_UPSTREAM="0d7a5b7"
 
 ANALISI_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$ANALISI_DIR/../pensioni_italia" && pwd)"
@@ -46,10 +50,49 @@ else
   echo "ATTENZIONE: commit $PIN_UPSTREAM non trovato. I numeri potrebbero divergere."
 fi
 
-# --- 2. Tassi di capitalizzazione dal PIL nominale ISTAT (SDMX) ---------------
-# -> output/data/clean/tassi_capitalizzazione_montante.csv
-#    output/data/clean/pil_nominale_capitalizzazione.csv
-"$PY" calcolatore/src/download_capitalization_data.py
+# --- 1-ter. PREREQUISITO: popolare le cache di rete ---------------------------
+# Il calcolatore fa chiamate di rete AL LIVELLO DEL MODULO: importare
+# pension_paid_calculator scarica (se manca la cache) i tassi di capitalizzazione ISTAT e
+# le retribuzioni contrattuali ISTAT. Senza cache, l'import FALLISCE se ISTAT e' giu' —
+# anche per gli script che quei dati non li usano.
+# Popolarle qui rende la replica indipendente dall'uptime ISTAT al momento dell'import.
+# ISTAT e' notoriamente instabile: durante l'istruttoria e' andato giu' piu' volte. Il
+# calcolatore fa chiamate di rete AL LIVELLO DEL MODULO (importare pension_paid_calculator
+# scarica, se manca la cache, tassi di capitalizzazione e retribuzioni contrattuali): senza
+# cache l'import FALLISCE, anche per gli script che quei dati non li usano.
+#
+# Un retry non basta: dipenderebbe comunque dall'uptime ISTAT. Qui si prova la fonte viva e,
+# se non risponde, si RICADE SU UNO SNAPSHOT VERSIONATO (analisi/cache_istat/), che e' l'output
+# degli stessi script di download. Cosi' la replica e' DETERMINISTICA e non dipende da ISTAT.
+CACHE_SNAPSHOT="$ANALISI_DIR/cache_istat"
+CLEAN_DIR="$REPO_DIR/output/data/clean"
+mkdir -p "$CLEAN_DIR"
+
+assicura_cache() {
+  local script="$1" file="$2" nome="$3"
+  [ -f "$CLEAN_DIR/$file" ] && return 0
+  for tentativo in 1 2 3; do
+    echo ">> $nome — download, tentativo $tentativo/3"
+    if "$PY" "$script" >/dev/null 2>&1 && [ -f "$CLEAN_DIR/$file" ]; then
+      echo ">> $nome — scaricato dalla fonte viva"
+      return 0
+    fi
+    sleep $((tentativo * 15))
+  done
+  if [ -f "$CACHE_SNAPSHOT/$file" ]; then
+    echo ">> $nome — ISTAT non risponde: USO LO SNAPSHOT VERSIONATO (analisi/cache_istat/)"
+    cp "$CACHE_SNAPSHOT/$file" "$CLEAN_DIR/$file"
+    return 0
+  fi
+  echo "ERRORE: $nome non disponibile ne' da ISTAT ne' da snapshot."
+  return 1
+}
+
+assicura_cache calcolatore/src/download_contract_wages.py   retribuzioni_contrattuali_ccnl.csv "retribuzioni contrattuali ISTAT (155_318)"
+assicura_cache calcolatore/src/download_capitalization_data.py   tassi_capitalizzazione_montante.csv "tassi di capitalizzazione ISTAT"
+[ -f "$CLEAN_DIR/pil_nominale_capitalizzazione.csv" ] ||   cp "$CACHE_SNAPSHOT/pil_nominale_capitalizzazione.csv" "$CLEAN_DIR/" 2>/dev/null || true
+
+# --- 2. Tassi di capitalizzazione: gia' assicurati sopra (fonte viva o snapshot) ---
 
 # --- 3. Aliquote contributive IVS FPLD (allegato storico INPS) ----------------
 # -> output/data/clean/aliquote_ivs_fpld_periodi.csv

@@ -72,33 +72,48 @@ $PY transition_model.py --csv analisi/output
 | **Eurostat** | COFOG (`gov_10a_exp`), HICP (`prc_hicp_aind`), pension entitlements (`nasa_10_pens1`), occupati (`lfsa_egan`) |
 | **AMECO** (Commissione UE) | `ITA.1.0.0.0.HWCDW` — retribuzioni nominali per occupato, dal 1960 |
 
-## ⚠️ Il commit upstream è PINNATO
+## Il commit upstream è PINNATO — a `0d7a5b7`, con un bypass dichiarato
 
-`esegui_pipeline_calcolatore.sh` fa `git checkout 1007648` sul repo di Nazareno. **Non è
-pignoleria**: la regressione da clone pulito ha mostrato che l'upstream si muove — al
-12/07/2026 aveva 5 commit successivi, fra cui *«Refine pension calculator contribution
-modelling»* e *«Fix simplified contribution-year scaling»*, che **cambiano i numeri** (es.
-montante dello scenario `carriera_lunga_mista`: 630.060 → 660.875).
+`esegui_pipeline_calcolatore.sh` fa `git checkout 0d7a5b7` sul repo di Nazareno. Il pin serve
+perché l'upstream si muove e i suoi cambiamenti possono spostare i risultati: **aggiornarlo
+richiede di riverificare, non solo rigirare.**
 
-Senza pin, chiunque cloni ottiene risultati diversi da quelli del report.
+**Cosa incorpora il pin.** I due bug fix upstream (`bcfda17`: con `mesi < 12`, 37 e 41 anni di
+contributi davano lo *stesso* montante; `a36819a`: contributi allocati all'indietro dal
+pensionamento) sono per noi a **delta zero** — misurato, non dedotto: si attivano solo con
+`anni_contribuiti < anni_disponibili` o `mesi < 12`, e i nostri script usano sempre gli estremi.
 
-**L'upgrade è stato verificato e NON adottato.** Non è un rinvio: è una decisione documentata
-in `analisi/output/upgrade_upstream_quarantena.md`.
+**Cosa bypassa.** Dal commit `52abdf7` il calcolatore usa gli **indici ISTAT delle retribuzioni
+contrattuali** per dare forma al sentiero salariale. Noi lo costruiamo con **AMECO**, e il
+bypass è in `analisi/override_tassi_ufficiali.py` — stesso pattern dell'override sui tassi
+ufficiali, e **il repo di Nazareno non viene modificato**.
 
-I due bug fix upstream (`bcfda17`, `a36819a`) **non ci toccano** — si attivano solo con
-`anni_contribuiti < anni_disponibili` o `mesi < 12`, e noi usiamo sempre gli estremi.
-Ma `52abdf7` cambia `salary_profile`: usa ora gli **indici ISTAT delle retribuzioni
-contrattuali** al posto dell'interpolazione geometrica. Il nostro Scenario B costruisce il
-sentiero con **AMECO**: adottare il pin renderebbe il metodo dichiarato nel report diverso da
-quello eseguito dal codice. È una **scelta di metodo**, non un aggiornamento di numeri.
+*Perché AMECO*: gli indici ISTAT misurano le retribuzioni **contrattuali** (minimi negoziali),
+AMECO quelle **effettivamente percepite**. Il controfattuale si costruisce sui contributi
+**versati**, che seguono la retribuzione effettiva (imponibile), non il minimo tabellare — lo
+slittamento salariale (superminimi, scatti, premi) sta nella prima e non nella seconda.
+Effetto misurato: con gli indici contrattuali l'eccesso salirebbe di 2-3 punti per fascia e il
+gettito di +0,1 mld. **La nostra scelta è la più conservativa delle due.**
 
-Effetto misurato: eccesso +1-2 punti per fascia (bordo alto 43,3% → 44,3%, fuori
-dall'intervallo dichiarato 28-43); gettito +0,1 mld (10,6 → 10,7). Nessuna conclusione
-si inverte.
+## ⚠️ Prerequisito: popolare le cache di rete PRIMA dell'import
 
-## Regressione — verificata
+Il calcolatore fa chiamate di rete **al livello del modulo**: importare
+`pension_paid_calculator` scarica — se manca la cache — i tassi di capitalizzazione ISTAT e le
+retribuzioni contrattuali ISTAT (dataflow `155_318`). **Senza cache, l'import fallisce se ISTAT
+è giù**, anche per gli script che quei dati non li usano.
 
-Da clone pulito, con il pin attivo, la pipeline riproduce:
+`esegui_pipeline_calcolatore.sh` popola le cache come primo passo, così la replica **non
+dipende dall'uptime ISTAT al momento dell'import**. Se lo si esegue a mano:
+
+```bash
+cd pensioni_italia && ../analisi/.venv/Scripts/python.exe calcolatore/src/download_contract_wages.py
+```
+
+## Regressione — verificata da clone pulito (pin 0d7a5b7 + bypass)
+
+Riprodotta da un clone pulito, con il pin nuovo e il bypass AMECO attivi. Le nostre
+grandezze escono a **delta zero** rispetto ai numeri del report (scarti < 0,0004 punti =
+arrotondamento), a conferma che i cambiamenti upstream sono neutri per il nostro uso:
 
 | Numero | Valore |
 |---|---|
@@ -110,7 +125,9 @@ Da clone pulito, con il pin attivo, la pipeline riproduce:
 | Passività — **centrale adottato** (media delle due, arrotondata) | **€2.450 mld** |
 | Picco BTP del ponte | €94 mld (4% del PIL), 2027 |
 | Profilo mediano: PAYG vs proposta | €22.650 → €27.239 (**+20%**) |
-| Test del calcolatore | **17/17 passati** |
+| Quota non finanziata (legacy/38a/40a) | **delta zero** vs report |
+| Bypass del sentiero contrattuale | **attivo** (sentiero = AMECO) |
+| Test del calcolatore | **22/22 passati** (17 + 5 nuovi upstream) |
 
 ## Due note metodologiche che il lettore deve conoscere
 

@@ -100,10 +100,11 @@ scomposizione per regime **al pubblico impiego**.
 
 ---
 
-## 5. Upgrade del pin upstream — verificato, in quarantena
+## 5. Upgrade del pin upstream — VERIFICATO E ADOTTATO ✅
 
-**Non è più una voce generica di backlog: è stato verificato, e la decisione è documentata.**
-Cfr. `analisi/output/upgrade_upstream_quarantena.md`.
+**Chiuso.** Il pin è stato aggiornato a `0d7a5b7` con bypass AMECO dichiarato, e la
+regressione da clone pulito è verde (delta zero). Storia in
+`analisi/output/upgrade_upstream_quarantena.md`.
 
 I 5 commit successivi al pin (`1007648` → `0d7a5b7`) contengono due bug fix che **non ci
 toccano** (si attivano solo con `anni_contribuiti < anni_disponibili` o `mesi < 12`; noi
@@ -115,18 +116,17 @@ al sentiero salariale fra i punti noti, invece dell'interpolazione geometrica.
 44,3%, **fuori** dall'intervallo dichiarato 28-43); il gettito si muove di **+0,1 mld**
 (10,6 → 10,7). Nessuna conclusione si inverte.
 
-**Perché non adottato**: non per la rottura dell'intervallo, che è cosmetica, ma perché
-adottare il pin significherebbe che il report **dichiara un metodo che il codice non esegue
-più**. Il nostro Scenario B costruisce il sentiero con AMECO; col pin nuovo diventerebbe
-«estremi AMECO + interno CCNL». È una **scelta di metodo**, non un aggiornamento di numeri:
+**Come è stato risolto**: adottato il pin **bypassando `contractual_salary_profile`** (opzione
+b), per conservare il sentiero AMECO — retribuzioni effettive vs minimi negoziali, la scelta
+più conservativa (gli indici contrattuali alzerebbero l'eccesso di 2-3 punti). Il bypass è in
+`analisi/override_tassi_ufficiali.py`, stesso pattern dell'override sui tassi ufficiali; il
+repo di Nazareno non è modificato. Delta zero verificato da clone pulito.
 
-- **(a)** adottare il pin e abbandonare AMECO per gli indici CCNL ISTAT;
-- **(b)** adottare il pin e bypassare `contractual_salary_profile` per conservare AMECO.
-
-**Da segnalare a Nazareno** (issue): il nuovo upstream fa una **chiamata di rete all'import
-del modulo** (`load_contract_wages()` a livello modulo, dataflow ISTAT 155_318). Senza cache,
-`import pension_paid_calculator` fallisce **senza rete**, anche per chi le retribuzioni
-contrattuali non le usa.
+**Da segnalare a Nazareno** (issue tuttora aperta): il nuovo upstream fa una **chiamata di rete
+all'import del modulo** (`load_contract_wages()`, dataflow ISTAT 155_318). Senza cache,
+`import pension_paid_calculator` fallisce **senza rete**. Gestito da parte nostra con snapshot
+versionato + fallback (`analisi/cache_istat/`), ma resta una fragilità upstream utile da
+segnalargli.
 
 ---
 
@@ -139,6 +139,6 @@ contrattuali non le usa.
 | 3. Quota A (ultima retribuzione) | ⬆️ | **basso** — solo un parametro |
 | 4. Pubblico impiego | ⬆️ *ma da ridefinire* | alto — questione concettuale, poi dati |
 
-| 5. Upgrade pin upstream | ⬆️ (+0,1 mld) | **verificato** — in quarantena per scelta di metodo |
+| 5. Upgrade pin upstream | — (delta zero) | ✅ **CHIUSO** — pin 0d7a5b7 + bypass AMECO, regressione verde |
 
 **Tutte spingono al rialzo. Il €10,6 mld regge da solo, ed è il bordo basso.**

@@ -1,8 +1,15 @@
-# Upgrade del pin upstream — **VERIFICATO, NON ADOTTATO**
+# Upgrade del pin upstream — **VERIFICATO E ADOTTATO** ✅
 
-> **Esito**: il pin resta `1007648`. Il criterio fissato *prima* di guardare i risultati è
-> scattato: un intervallo dichiarato si rompe. E c'è una seconda ragione, indipendente e più
-> seria, che richiede una decisione di metodo — non un aggiornamento di numeri.
+> **Esito finale**: pin aggiornato a `0d7a5b7` **con bypass AMECO dichiarato**. La regressione
+> da clone pulito è verde — le nostre grandezze escono a **delta zero** — e i test del
+> calcolatore passano 22/22. Il bypass conserva il sentiero salariale AMECO neutralizzando
+> `contractual_salary_profile`, stesso pattern dell'override sui tassi ufficiali; il repo di
+> Nazareno non è modificato.
+>
+> Il percorso che ha portato qui è documentato sotto. La prima valutazione era «non adottato»
+> perché un intervallo dichiarato si rompeva *se* si adottavano gli indici contrattuali; la
+> soluzione (opzione b: adottare i bug fix ma bypassare il sentiero contrattuale) conserva il
+> metodo AMECO e riporta il delta a zero — cfr. §8.
 
 ## 1. Cosa correggono davvero i commit di Nazareno
 
@@ -103,3 +110,38 @@ tipo di cosa che un autore vuole sapere, e apre la collaborazione.
 - Pin: **`1007648`**, invariato.
 - Il report resta riproducibile: regressione verde, nessun numero cambia.
 - Backlog aggiornato in `analisi/FASE2_estensioni.md`.
+
+---
+
+## 8. Esito: adottato con bypass (aggiornamento finale)
+
+La quarantena si è chiusa scegliendo l'**opzione (b)**: adottare il pin `0d7a5b7` — così
+incassiamo i due bug fix upstream, che per noi sono a delta zero — e **bypassare
+`contractual_salary_profile`** per conservare il sentiero salariale AMECO.
+
+**Perché (b) e non (a).** Gli indici ISTAT delle retribuzioni contrattuali misurano i **minimi
+negoziali**; AMECO le retribuzioni **effettivamente percepite** per occupato. Il controfattuale
+contributivo si costruisce sui contributi **versati**, che seguono l'imponibile reale, non il
+minimo tabellare: lo slittamento salariale (superminimi, scatti, premi) sta nella prima serie e
+non nella seconda. La scelta AMECO è anche la **più conservativa** — gli indici contrattuali
+alzerebbero l'eccesso di 2-3 punti per fascia e il gettito di +0,1 mld.
+
+**Verifica.** Regressione da **clone pulito** con pin nuovo + bypass:
+
+| Grandezza | Report | Clone pulito | Delta |
+|---|---|---|---|
+| quota legacy 33a/58 | 37,662% | 37,662% | < 0,0004 |
+| quota carriera 38a/63 | 37,955% | 37,955% | < 0,0004 |
+| quota piena 40a/65 | 32,463% | 32,463% | < 0,0004 |
+| passività Via A / Via B | 2.599 / 2.297 | 2.599 / 2.297 | 0 |
+| picco BTP | 94 mld | 94 mld | 0 |
+| profilo mediano | 22.650 → 27.239 | idem | 0 |
+| test calcolatore | — | **22/22** | — |
+
+**Delta zero confermato.** Nessun numero del report cambia; la voce di backlog è chiusa.
+
+**Robustezza di rete** (requisito collaterale, risolto). Il calcolatore fa chiamate di rete
+all'import del modulo, e ISTAT è instabile. La pipeline ora: (1) prova la fonte viva con retry;
+(2) se ISTAT non risponde, ricade su uno **snapshot versionato** (`analisi/cache_istat/`, 68K,
+output degli script di download upstream). La replica è così **deterministica** e non dipende
+dall'uptime ISTAT. La fragilità upstream (rete all'import) resta da segnalare a Nazareno.
