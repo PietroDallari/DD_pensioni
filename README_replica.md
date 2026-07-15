@@ -109,9 +109,11 @@ dipende dall'uptime ISTAT al momento dell'import**. Se lo si esegue a mano:
 cd pensioni_italia && ../analisi/.venv/Scripts/python.exe calcolatore/src/download_contract_wages.py
 ```
 
-## Regressione — verificata
+## Regressione — verificata da clone pulito (pin 0d7a5b7 + bypass)
 
-Da clone pulito, con il pin attivo, la pipeline riproduce:
+Riprodotta da un clone pulito, con il pin nuovo e il bypass AMECO attivi. Le nostre
+grandezze escono a **delta zero** rispetto ai numeri del report (scarti < 0,0004 punti =
+arrotondamento), a conferma che i cambiamenti upstream sono neutri per il nostro uso:
 
 | Numero | Valore |
 |---|---|
@@ -123,7 +125,9 @@ Da clone pulito, con il pin attivo, la pipeline riproduce:
 | Passività — **centrale adottato** (media delle due, arrotondata) | **€2.450 mld** |
 | Picco BTP del ponte | €94 mld (4% del PIL), 2027 |
 | Profilo mediano: PAYG vs proposta | €22.650 → €27.239 (**+20%**) |
-| Test del calcolatore | **17/17 passati** |
+| Quota non finanziata (legacy/38a/40a) | **delta zero** vs report |
+| Bypass del sentiero contrattuale | **attivo** (sentiero = AMECO) |
+| Test del calcolatore | **22/22 passati** (17 + 5 nuovi upstream) |
 
 ## Due note metodologiche che il lettore deve conoscere
 
