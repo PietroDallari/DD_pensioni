@@ -1,8 +1,6 @@
 # Revisione — "Prima i Fondi Pensione, poi il Venture Capital" (Policy Paper ORA! | Innovazione, maggio 2026)
 
-Data revisione: 16 luglio 2026 — **v3: tutti gli edit applicabili sono stati applicati al paper** (file `Previdenza_complementare_e_venture_capital_rev.md`)
-
-**Changelog v3.** Applicati direttamente al testo: E3 ("Nel 1986" + nota tabella + riferimento Gompers 2004), E5 fix conservativo (refuso corretto, righe Fondenergia unificate con asterisco "1-2, in verifica", dichiarazione proxy PE), Z1 (natura condizionale della misura esplicitata in §3.1 ed executive summary), Z2 ("circa il 40%" con numeratore/denominatore in tutte e tre le occorrenze), Z3 (stock 2025 e ratio 2023 disallineati esplicitamente, anche in conclusione), Z4 (perimetro contributi COVIP qualificato), Z5 (nota sulla base AUM implicita ~136 mld), Z6 (riformulazione "3,4x raccolta media 2020-2025" in executive summary e §3.3), Z7a (ABP: rimosso il dato non verificato di 30 mld, sostituito con aliquota 27% e patrimonio ~542 mld da Jaarverslag 2024, con riferimento aggiunto in bibliografia), Z7b (rimosso il "mezzo miliardo" non derivato, sostituito con base di calcolo dichiarata da relazione tecnica), Z8 (paragrafi duplicati fusi).
+Data revisione: 16 luglio 2026 — **v2, con esiti delle verifiche su fonte primaria**
 
 **Legenda stati:** ✅ risolto · 🔧 fix pronto, da applicare · 📌 riassegnato · 🔴 aperto
 
@@ -154,19 +152,18 @@ Il piano di transizione usa la redirezione del TFR come componente del carve-out
 
 ## Riepilogo operativo
 
-| Item | Stato | Azione residua | Chi |
+| Item | Stato | Prossima azione | Chi |
 |---|---|---|---|
-| E1 round VC | ✅ risolto | — | fatto (brother) |
-| E2 GBER | ✅ risolto | — | fatto (brother) |
-| E3 Gompers-Lerner | ✅ risolto | — (fix applicato) | fatto |
-| E4 date ERISA | ✅ risolto | — | fatto (brother) |
-| E5 PitchBook | 🔧 fix conservativo applicato | verificare su estratto raw se Fondenergia = 1 o 2 commitment e sciogliere l'asterisco | ORA (chi ha fatto l'estrazione) |
-| Z1 obbligo/incentivo | 🔧 linguaggio armonizzato | verifica finale sul testo di legge (Scaleup Act / L. 193/2024 / DL 95/2025): perimetro esatto della quota | ORA/legale |
-| Z2 "circa il 40%" | ✅ risolto | — | fatto |
-| Z3 mismatch anni | ✅ risolto | — | fatto |
-| Z4 perimetro contributi | ✅ risolto | opzionale: inserire il totale di sistema dalla Relazione COVIP 2025 quando pubblicata | redazione |
-| Z5 base 0,14% | ✅ risolto | — | fatto |
-| Z6 commitment/fundraising | ✅ risolto | — | fatto |
-| Z7a ABP | ✅ risolto | opzionale: dato puntuale dei premi annui dal Jaarverslag per chi volesse la cifra esatta | redazione |
-| Z7b Fondo garanzia | ✅ risolto (numero rimosso, base dichiarata) | quantificazione in relazione tecnica | analisi |
-| Z8 duplicazione §2.3 | ✅ risolto | — | fatto |
+| E1 round VC | ✅ risolto | — (tabella corretta nel paper) | fatto |
+| E2 GBER | ✅ risolto | — | fatto |
+| E3 Gompers-Lerner | ✅ verificato | applicare fix "Nel 1986" + nota tabella | redazione |
+| E4 date ERISA | ✅ risolto | — | fatto |
+| E5 PitchBook | 📌 riassegnato | verificare estratto raw; intanto fix conservativo | ORA (chi ha fatto l'estrazione) |
+| Z1 obbligo/incentivo | 🔴 aperto | uniformare linguaggio + verifica testo di legge | redazione |
+| Z2 "meno del 40%" | 🔴 aperto | riformulare "circa il 40%" con perimetro | redazione |
+| Z3 mismatch anni | 🔴 aperto | allineare stock e ratio | redazione |
+| Z4 perimetro contributi | 🔴 aperto | qualificare o usare totale di sistema | redazione |
+| Z5 base 0,14% | 🔴 attenuato | dichiarare la base AUM | redazione |
+| Z6 commitment/fundraising | 🔧 fix pronto | riformulare con media 2020–25 (~3,4x) | redazione |
+| Z7 ABP + Fondo garanzia | 🔴 aperto | sourcing (rapporto ABP; base di calcolo) | redazione/analisi |
+| Z8 duplicazione §2.3 | 🔴 aperto | fondere i paragrafi | redazione |
