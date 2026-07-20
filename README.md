@@ -13,10 +13,21 @@ Nazareno Lecis e resta il suo:
 
 | Percorso | Contenuto |
 |---|---|
-| [`docs/`](docs/) | Il documento di analisi sulla transizione PAYG → capitalizzazione. |
-| [`analisi/esegui_pipeline_calcolatore.sh`](analisi/esegui_pipeline_calcolatore.sh) | Ricostruisce da zero il calcolatore di Nazareno con i dati ufficiali (ISTAT SDMX, INPS, tavole di mortalità). |
+| [`docs/Pensioni.md`](docs/Pensioni.md) | Position paper "Per un Welfare sostenibile". |
+| [`docs/report_transizione_v3.md`](docs/report_transizione_v3.md) | Rapporto tecnico "Uscita dell'Italia dal Pay-As-You-Go" (ogni cifra replicabile dalla pipeline). |
+| [`docs/nota_riconciliazione_position_paper.md`](docs/nota_riconciliazione_position_paper.md) | Riconciliazione punto per punto tra i due documenti. |
+| [`docs/previdenza complementare/`](docs/previdenza%20complementare/) | Paper collaterale: previdenza complementare e venture capital. |
+| `docs/old stuff/` | Versioni superate, tenute per storico. |
+| [`analisi/`](analisi/) | La pipeline riproducibile: verifiche dati e scenari, in fasi (`fase1_…` → `fase6_…`), più le leve di micro-simulazione e riconciliazione dei perimetri. |
+| [`transition_model.py`](transition_model.py) | Il modello di transizione (due comparti, profilo temporale, profili lavoratore, scenari di prelievo A/B). |
+| [`analisi/esegui_pipeline_calcolatore.sh`](analisi/esegui_pipeline_calcolatore.sh) | Ricostruisce da zero il calcolatore di Nazareno con i dati ufficiali (ISTAT SDMX, INPS, tavole di mortalità) e popola le cache. |
 | [`analisi/override_tassi_ufficiali.py`](analisi/override_tassi_ufficiali.py) | Il nostro override metodologico (sotto). |
-| [`analisi/output/`](analisi/output/) | Risultati: scarti sui tassi e impatto sui tre scenari demo. |
+| [`analisi/cache_istat/`](analisi/cache_istat/) | Snapshot delle fonti ISTAT/INPS, fallback quando ISTAT è giù (vedi il suo README). |
+| [`analisi/output/`](analisi/output/) | Tutti i risultati: CSV dei parametri e degli scenari + le note `.md` (eccesso per profilo, cross-check, test di robustezza). |
+
+> **Per rigenerare ogni numero del report** — comandi, ordine e cosa produce
+> ciascuno — vedi **[`README_replica.md`](README_replica.md)**. Questo README dà
+> il quadro; `README_replica.md` è la guida operativa alla replica.
 
 ## Setup
 
